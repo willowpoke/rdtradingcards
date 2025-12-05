@@ -1,17 +1,17 @@
 local command = {}
 function command.run(message, mt, overwrite)
   local authcheck
-  
+
   if overwrite then
     authcheck = true
   elseif message.guild then
-    local cmember = message.guild:getMember(message.author)
-    authcheck = cmember:hasRole(privatestuff.modroleid)
+    authcheck = isauthoradmin(message)
   end
   
   if authcheck then
     print("authcheck passed")
     _G["privatestuff"] = dofile('privatestuff.lua')
+    
 
     -- Lua implementation of PHP scandir function
     _G['scandir'] = function (directory)
@@ -19,8 +19,15 @@ function command.run(message, mt, overwrite)
     end
     
     for i, v in ipairs(scandir("commands")) do
-      local filename = string.sub(v, 1, -5)
-      cmd[filename] = dofile('commands/' .. v)
+      if fs.existsSync("commands/"..v.."/") then
+        for _, vrec in ipairs(scandir("commands/"..v)) do
+          local filename = string.sub(vrec, 1, -5)
+          cmd[v.."_"..filename] = dofile('commands/' .. v.."/"..vrec)
+        end
+      else
+        local filename = string.sub(v, 1, -5)
+        cmd[filename] = dofile('commands/' .. v)
+      end
     end
     print("done loading commands")
 
@@ -42,6 +49,19 @@ function command.run(message, mt, overwrite)
     end
     print("done loading tracery")
 
+    _G["embed_colors"] = { -- easy to add more: just put a new line!
+      default =  {colorcode = 0x85c5ff, shortname = "default", fullname = "RDCards Blue"},
+      red =      {colorcode = 0xff0000, shortname = "red", fullname = "Stylish Red"},
+      orange =   {colorcode = 0xff8000, shortname = "orange", fullname = "Pretty Orange"},
+      yellow =   {colorcode = 0xfcd68d, shortname = "yellow", fullname = "Light Yellow"},
+      green =    {colorcode = 0x00ff88, shortname = "green", fullname = "Jade Green"},
+      blue =     {colorcode = 0x33ccff, shortname = "blue", fullname = "Nice Blue"},
+      purple =   {colorcode = 0x7c00bf, shortname = "purple", fullname = "Fun Purple"},
+      pink =     {colorcode = 0xff00dc, shortname = "pink", fullname = "Hot Pink"},
+      brown =    {colorcode = 0x481b1d, shortname = "brown", fullname = "Beans Brown"},
+    }
+
+
     _G['defaultjson'] = {
       inventory = {},
       storage = {},
@@ -56,6 +76,21 @@ function command.run(message, mt, overwrite)
       lastbox = -24,
       lastrob = 0,
       tokens = 0,
+      embedc = 0x85c5ff,
+      unlocked_colors = {
+        default = true
+      },
+      -- themeoffers = {
+      --   red = {},
+      --   orange = {},
+      --   yellow = {},
+      --   green = {},
+      --   blue = {},
+      --   purple = {},
+      --   pink = {},
+      --   brown = {},
+      -- },
+      -- currentoffer = "",
       pronouns = {
         selection = "they",
         their = "their",
@@ -81,15 +116,19 @@ function command.run(message, mt, overwrite)
     }
 
     local errorping
-    if privatestuff.errorping then
+    if config.errorping then
       errorping = true
     else
       errorping = false
     end
+
+    if config.prefix then
+      _G["prefix"] = config.prefix
+    end
     
     _G['defaultworldsave'] = {
       tokensdonated = 0,
-      boxpool = {"ssss45", "roomsdc_ur", "roomsdc_r", "underworld", "enchantedlove", "wallclockur", "rhythmdogtor", "moai", "coolbird", "beanshopper", "cardboardworld", "acofoi", "rollermobster", "inimaur", "fhottour", "superstrongcavity", "soundsr", "pancakefever", "nicoleur", "feedthemachine", "retrofunky", "heartchickalt"},
+      boxpool = {"ssss45", "roomsdc_ur", "roomsdc_r", "underworld", "enchantedlove", "wallclockur", "dogtor", "moai", "coolbird", "beanshopper", "cardboardworld", "acofoi", "rollermobster", "inimaur", "fhottour", "superstrongcavity", "soundsr", "pancakefever", "nicoleur", "feedthemachine", "retrofunky", "heartchickalt"},
       lablookindex = 0,
       lablooktext = "abcdefghijklmnopqrstuvwxyz",
       ws = 0,
@@ -142,6 +181,21 @@ function command.run(message, mt, overwrite)
       itemprice = 4
     }
     
+    _G["rarities"] = {
+      r = "Rare",
+      sr = "Super Rare",
+      ur = "Ultra Rare",
+      dc = "Discontinued",
+      alt = "Alternate",
+      dcr = "Discontinued Rare",
+      dcsr = "Discontinued Super Rare",
+      dcur = "Discontinued Ultra Rare",
+      dcalt = "Discontinued Alternate",
+      altalt = "Alternate Alternate",
+      pico8 = "PICO-8",
+    }
+    _G["rarities_invert"] = {}
+    for k,v in pairs(rarities) do _G["rarities_invert"][v] = k end
     
     _G['amtable'] = {
       pyrowmid = {"strange machine", "machine", "panda"},
@@ -571,14 +625,14 @@ function command.run(message, mt, overwrite)
 
       print("Button pressed, running " .. etype)
 
-      local status, err = pcall(function ()
+      local status, err = xpcall(function ()
         cmdre[etype].run(message, interaction, data, interaction.data.custom_id)
-      end)
+      end, debug.traceback)
 
       if not status then
         print("uh oh")
         if errorping then
-          message.channel:send("Oops! An error has occured! Error message: ```" .. err .. "``` (" .. privatestuff.errorping .. " please fix this thanks)")
+          message.channel:send("Oops! An error has occured! Error message: ```" .. err .. "``` (" .. config.errorping .. " please fix this thanks)")
         else
           message.channel:send("Oops! An error has occured! Error message: ```" .. err .. "``` (please fix this thanks)")
         end
@@ -612,6 +666,7 @@ function command.run(message, mt, overwrite)
     addcommand("store",cmd.store)
     addcommand("storage",cmd.storage)
     addcommand("reloaddb",cmd.reloaddb)
+    addcommand("reloadconfig",cmd.reloadconfig)
     addcommand("medals",cmd.medals)
     addcommand("crash",cmd.crash)
     addcommand("showmedal",cmd.showmedal)
@@ -665,6 +720,7 @@ function command.run(message, mt, overwrite)
     addcommand("b",cmd.use,0,{"box"})
     addcommand("throw",cmd.throw)
     addcommand("yeet",cmd.throw) --im a comedy genius
+    addcommand("toss",cmd.throw) --suggested by axi
     addcommand("vipstest",cmd.vipstest,0)
     addcommand("catch",cmd.catch)
     addcommand("giveitem",cmd.giveitem)
@@ -677,6 +733,7 @@ function command.run(message, mt, overwrite)
     addcommand("langlist",cmd.langlist)
     addcommand("rob",cmd.rob)
     addcommand("rtsitem",cmd.rtsitem)
+    addcommand("embed",cmd.embed)
     
     _G['handlemessage'] = function (message, content)
 	  if message.author.id ~= client.user.id or content then
@@ -686,19 +743,28 @@ function command.run(message, mt, overwrite)
           if not (message.author.bot == true) then
           local uj = dpf.loadjson("savedata/" .. message.author.id .. ".json", defaultjson)
           local sj = dpf.loadjson("savedata/shop.json",defaultshopsave)
+          if not uj.embedc then
+            uj.embedc = embed_colors["default"].colorcode
+          end
+          -- if not uj.unlocked_colors then
+          --   uj.unlocked_colors = {default = true}
+          -- end
+          -- if not uj.themeoffers then
+          --   setup_theme_offers(uj)
+          -- end
           if not sj.stocknum then
             sj.stocknum = 1
             dpf.savejson("savedata/shop.json",sj)
           end
-            if not uj.lang then
-              uj.lang = "en"
-            end
-            if not uj.pronouns["selection"] then
-              uj.pronouns["selection"] = uj.pronouns["they"]
-            end
-            if not uj.lastrob then
-              uj.lastrob = 0
-            end
+          if not uj.lang then
+            uj.lang = "en"
+          end
+          if not uj.pronouns["selection"] then
+            uj.pronouns["selection"] = uj.pronouns["they"]
+          end
+          if not uj.lastrob then
+            uj.lastrob = 0
+          end
           dpf.savejson("savedata/" .. message.author.id .. ".json",uj)
           end
           print("found ".. v.trigger)
@@ -719,13 +785,13 @@ function command.run(message, mt, overwrite)
             end
           end
           print("nmt: " .. inspect(nmt))
-          local status, err = pcall(function ()
+          local status, err = xpcall(function ()
             v.commandfunction.run(message,nmt,v.usebypass,content)
-          end)
+          end, debug.traceback)
           if not status then
             print("uh oh")
             if errorping then
-              message.channel:send("Oops! An error has occured! Error message: ```" .. err .. "``` (" .. privatestuff.errorping .. " please fix this thanks)")
+              message.channel:send("Oops! An error has occured! Error message: ```" .. err .. "``` (" .. config.errorping .. " please fix this thanks)")
             else
               message.channel:send("Oops! An error has occured! Error message: ```" .. err .. "``` (please fix this thanks)")
             end
@@ -824,6 +890,142 @@ function command.run(message, mt, overwrite)
       return "vips_out/shop.png"
     end
     -- getshopimage()
+
+    _G["colortablefromint"] = function(col)
+      return {math.floor(col / (256*256))%256, math.floor(col/256)%256, col%256,255}
+    end
+
+    _G['getthemeofferimage'] = function(uj)
+      print("remaking trade")
+      local base = vips.Image.new_from_file("assets/terminal_trade.png")
+
+      local cards = {"srtgoatr", "marvinr", "doctahr"}
+      if uj.currentoffer then
+        cards = uj.themeoffers[uj.currentoffer]
+      end
+      for index, value in ipairs(cards) do
+        local yposition = 78+32*(index-1)
+        local card = vips.Image.new_from_file(getcardthumb(value))
+        card = card:resize(32/card:height())
+        base = base:composite2(card, "over", {x=29,y=yposition})
+        local text = vips.Image.text("<span foreground='white'>"..value.."</span>", {width=96, rgba=true, font="Departure Mono 11px"})
+        base = base:composite2(text, "over", {x=64,y=yposition+10})
+      end
+      local offer_text = "theme :3"
+      if uj.currentoffer == "_owo" then
+        offer_text = "owo"
+      end
+      local text_img = vips.Image.text("<span foreground='white'>"..offer_text.."</span>", {width=96, rgba=true, font="Departure Mono 11px"})
+      if uj.currentoffer ~= "_owo" then
+        base = base:draw_rect(colortablefromint(embed_colors[uj.currentoffer].colorcode), 243, 88, 64, 32, {fill = true})
+      end
+      base = base:composite2(text_img, "over", {x=248,y=uj.currentoffer == "_owo" and 81 or 79})
+      base:write_to_file("vips_out/terminal_trade.png")
+      return "vips_out/terminal_trade.png"
+
+    end
+
+    _G['reload_theme_trade'] = function (uj)
+      local themes_not_unlocked = {}
+      for themename, themedata in pairs(embed_colors) do
+        if not uj.unlocked_colors[themename] then
+          themes_not_unlocked[#themes_not_unlocked+1] = themename
+          print(" doesn't have ".. themename)
+        else
+          print(" has ".. themename)
+        end
+      end
+      print(tostring(#themes_not_unlocked).." themes not unlocked")
+      if not uj.hasengwish then
+        themes_not_unlocked[#themes_not_unlocked+1] = "_owo"
+      end
+      if #themes_not_unlocked > 0 then
+        uj.currentoffer = themes_not_unlocked[math.random(#themes_not_unlocked)]
+      end
+    end
+		
+    _G['setup_theme_offers'] = function(uj)
+      -- Get all the themes you don't have
+      local themes_not_unlocked = {}
+      for themename, themedata in pairs(embed_colors) do
+        if not uj.unlocked_colors[themename] then
+          themes_not_unlocked[#themes_not_unlocked+1] = themename
+          print(" doesn't have ".. themename)
+        else
+          print(" has ".. themename)
+        end
+      end
+      print(tostring(#themes_not_unlocked).." themes not unlocked")
+      if not uj.hasengwish then
+        themes_not_unlocked[#themes_not_unlocked+1] = "_owo"
+      end
+      if not uj.themeoffers then
+        uj.themeoffers = {}
+      end
+      for _, color in ipairs(themes_not_unlocked) do
+        if not uj.themeoffers[color] then
+          uj.themeoffers[color] = {}
+          for i = 1, 3, 1 do
+            uj.themeoffers[color][i] = ptable["nothing"][math.random(#ptable["nothing"])]
+          end
+        end
+      end
+      uj.currentoffer = themes_not_unlocked[math.random(#themes_not_unlocked)]
+      return uj
+    end
+
+    _G['formatstring'] = function (baseString, objectsToAdd, plural_s)
+      -- Replace the base {X}
+      local output = baseString
+
+      -- print(output)
+      
+      for key, value in pairs(objectsToAdd) do
+        output = output:gsub("{"..tostring(key).."}",tostring(value))
+      end
+
+
+      -- Replace the {Xs}
+      if plural_s ~= nil and plural_s ~= "" then
+        for key, value in pairs(objectsToAdd) do
+          if type(value) == "number" and value ~= 1 then
+            output = output:gsub("{"..tostring(key).."s}",plural_s)
+          else
+            output = output:gsub("{"..tostring(key).."s}","")
+          end
+        end
+      end
+
+
+      return output
+    end
+
+    _G['formattime'] = function (minutesleft, langcode)
+      -- i have unjankified it (lying)
+      local lang = dpf.loadjson("langs/" .. langcode .. "/pull.json", "")
+      local durationtext = ""
+      if math.floor(minutesleft / 60) > 0 then
+        durationtext = math.floor(minutesleft / 60) .. lang.time_hour
+          if lang.needs_plural_s == true then
+            if math.floor(minutesleft / 60) ~= 1 then 
+              durationtext = durationtext .. lang.time_plural_s 
+            end
+          end
+      end
+      if minutesleft % 60 > 0 then
+        if durationtext ~= "" then
+          durationtext = durationtext .. lang.time_and
+        end
+        durationtext = durationtext .. minutesleft % 60 .. lang.time_minute
+        if lang.needs_plural_s == true then
+          if minutesleft % 60 ~= 1 then
+            durationtext = durationtext .. lang.time_plural_s
+          end
+        end
+      end
+      return durationtext
+    end
+    
 
     _G['clearcache'] = function()
       os.remove("test.txt")
@@ -969,6 +1171,12 @@ function command.run(message, mt, overwrite)
         found = true
       end
       return found
+    end
+    
+    _G['tablelength'] = function(T)
+      local count = 0
+      for _ in pairs(T) do count = count + 1 end
+      return count
     end
 
     print("getchickimage")

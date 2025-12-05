@@ -4,8 +4,7 @@
 	"donated_hole": "A **Token** has been dropped into the **Hole.** Thank you for your generosity!",
 	
 	"using_terminal": "Using Terminal...",
-	"donated_terminal_1": "The **Terminal** whirrs happily. A printout lets you know that ",
-	"donated_terminal_2": " tokens have been donated so far.",
+	"donated_terminal": "The **Terminal** whirrs happily. A printout lets you know that {1} tokens have been donated so far.",
 	
 	"donated_hole_ws_1": "***The ground rumbles...",
 	"donated_hole_ws_506": " and so does the Strange Machine***",
@@ -15,4 +14,8 @@
 
 	"denied_hole": "You decide to not put a **Token** into the **Hole.** (how rude!)",
 	"denied_terminal": "You decide to not put a **Token** into the **Terminal.** (how rude!)",
+	"denied_terminal_1101": "You decide to not **upgrade** the **Terminal.** (what!)",
+
+	"restart_1102": "```RESTARTING...```",
+	"bootup_1102": "The **Terminal**'s screen turns off, as you hear the whirring get louder. Eventually, a **chime** can be heard, as the screen lights up. \n\nYou hear a **meow** coming from the **Terminal**'s screen."
 }

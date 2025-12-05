@@ -13,18 +13,18 @@ function command.run(message, mt)
 
   if not curfilename then 
     if nopeeking then
-      message.channel:send(lang.error_nopeeking_1 .. mt[1] .. lang.error_nopeeking_2)
+      message.channel:send(formatstring(lang.error_nopeeking, {mt[1]}))
     else
-      message.channel:send(lang.no_item_1 .. mt[1] .. lang.no_item_2)
+      message.channel:send(formatstring(lang.no_item, {mt[1]}))
     end
     return
   end
 
   if not uj.inventory[curfilename] then
     if nopeeking then
-      message.channel:send("Sorry, but I either could not find the " .. mt[1] .. " card in the database, or you do not have it. Make sure that you spelled it right!")
+      message.channel:send(formatstring(lang.error_nopeeking, {cdb[curfilename].name}))
     else
-      message.channel:send(lang.dont_have_1 .. cdb[curfilename].name .. lang.dont_have_2)
+      message.channel:send(formatstring(lang.dont_have, {cdb[curfilename].name}))
     end
     return
   end
@@ -38,11 +38,7 @@ function command.run(message, mt)
   end
 
   if uj.inventory[curfilename] >= numcards then
-    if uj.lang == "ko" then
-		ynbuttons(message, lang.shred_confirm_1 .. uj.id .. lang.shred_confirm_2 .. cdb[curfilename].name .. lang.shred_confirm_3 .. numcards .. lang.shred_confirm_4 .. lang.shred_confirm_5, "shred", {curfilename = curfilename,numcards = numcards}, uj.id, uj.lang)
-	else
-		ynbuttons(message, lang.shred_confirm_1 .. uj.id .. lang.shred_confirm_2 .. numcards .. lang.shred_confirm_3 .. cdb[curfilename].name .. lang.shred_confirm_4 .. (numcards ~= 1 and lang.needs_plural_s == true and lang.plural_s or "") .. lang.shred_confirm_5, "shred", {curfilename = curfilename,numcards = numcards}, uj.id, uj.lang)
-	end
+    ynbuttons(message, formatstring(lang.shred_confirm, {uj.id, numcards, cdb[curfilename].name}, lang.plural_s), "shred", {curfilename = curfilename,numcards = numcards}, uj.id, uj.lang)
   else
     message.channel:send(lang.not_enough_1 .. cdb[curfilename].name .. lang.not_enough_2)
   end

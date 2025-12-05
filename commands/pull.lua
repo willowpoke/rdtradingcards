@@ -10,14 +10,14 @@ local time = sw:getTime()
     return
   end
 
-  local cooldown = 11.5
+  local cooldown = config.cooldowns.pull
 
   if not uj.equipped then
     uj.equipped = "nothing"
   end
 
   if uj.equipped == "stoppedwatch" then
-    cooldown = 10
+    cooldown = config.cooldowns.pull_stopwatch
   end
 
   if not uj.storedpulls then
@@ -28,20 +28,21 @@ local time = sw:getTime()
 	uj.acepulls = 0
   end
 
-  local maxcryopodstorage = 3
+  local maxcryopodstorage = config.cooldowns.pull_cryopod_max
   
   
   if uj.equipped == "sparecryopod" then
     local missedpulls = math.floor((time:toHours() - math.max(uj.lastpull, uj.lastequip))/cooldown)-1
     if missedpulls > 0 then
-			--TODO: translated strings (also i really need to hurry up on implementing the upgrade to languages)
-      local resultmessage = "You missed "..missedpulls.." opportunities to pull since last pull,  "
+      local resultmessage = formatstring(lang.cryopod_miss, {missedpulls})
       if uj.storedpulls == maxcryopodstorage then
-        resultmessage = resultmessage.."but your **Spare Cryopod** is full, because it has already "..maxcryopodstorage.." pulls in it."
+        resultmessage = resultmessage..formatstring(lang.cryopod_full, {maxcryopodstorage}) -- full!
       elseif missedpulls + uj.storedpulls > maxcryopodstorage then
-        resultmessage = resultmessage.."however your **Spare Cryopod** was able to store "..(math.min(uj.storedpulls + missedpulls, maxcryopodstorage)-uj.storedpulls).." of them."
+        resultmessage = resultmessage..formatstring(lang.cryopod_filled, {
+          (math.min(uj.storedpulls + missedpulls, maxcryopodstorage)-uj.storedpulls) -- formula for extra pulls
+        })
       else
-        resultmessage = resultmessage.."however your **Spare Cryopod** was able to store all "..missedpulls.." of them, bringing your total stored pulls to "..uj.storedpulls+missedpulls.."."
+        resultmessage = resultmessage..formatstring(lang.cryopod_partly, {missedpulls, uj.storedpulls+missedpulls})
       end
       message.channel:send(resultmessage)
       uj.storedpulls = math.min(uj.storedpulls + missedpulls, maxcryopodstorage)
@@ -53,32 +54,12 @@ local time = sw:getTime()
   if uj.lastpull + cooldown > time:toHours() then
     if uj.storedpulls > 0 then -- use a pull stored in the freezer (the spare cryopod)
       uj.storedpulls = uj.storedpulls - 1
-      message.channel:send("You're on cooldown, but however, you have spare pulls stored in your **Spare Cryopod**, which means you can pull anyways! (You now have **"..uj.storedpulls.."** spare pulls remaining)")
+      message.channel:send(formatstring(lang.cryopod_pull, {uj.storedpulls}, "s"))
     else
-      --extremely jank implementation, please make this cleaner if possible
       local minutesleft = math.ceil(uj.lastpull * 60 - time:toMinutes() + cooldown * 60)
-      local durationtext = ""
-      if math.floor(minutesleft / 60) > 0 then
-        durationtext = math.floor(minutesleft / 60) .. lang.time_hour
-          if lang.needs_plural_s == true then
-            if math.floor(minutesleft / 60) ~= 1 then 
-              durationtext = durationtext .. lang.time_plural_s 
-            end
-          end
-      end
-      if minutesleft % 60 > 0 then
-        if durationtext ~= "" then
-          durationtext = durationtext .. lang.time_and
-        end
-        durationtext = durationtext .. minutesleft % 60 .. lang.time_minute
-        if lang.needs_plural_s == true then
-          if minutesleft % 60 ~= 1 then
-            durationtext = durationtext .. lang.time_plural_s
-          end
-        end
-      end
+      local durationtext = formattime(minutesleft, uj.lang)
 
-      message.channel:send(lang.wait_message_1 .. durationtext .. lang.wait_message_2)
+      message.channel:send(formatstring(lang.wait_message, {durationtext}))
       return
     end
   end
@@ -188,11 +169,10 @@ local time = sw:getTime()
     if v == "yor" or v == "yosr" or v == "your" then title = lang.pulled_yo end
     if i == 2 then title = lang.pulled_doubleclick end
     if i == 3 then title = lang.pulled_tripleclick end
-	if v == "samarrrai" then title = "Ahoy Matey!" end
+    if v == "samarrrai" then title = "Ahoy Matey!" end
 
     if v == "rdnot" then
-      if uj.lang == "ko" then
-        message.channel:send("```" .. title .. "\n@" .. message.author.name .. lang.rdnot_message_1 .. lang.rdnot_message_2 .. [[
+      message.channel:send("```" .. title .. "\n@" .. formatstring(lang.rdnot_message, {message.author.name, uj.pronouns["their"]}) .. [[
 _________________
 | SR            |
 |               |
@@ -202,56 +182,31 @@ _________________
 |     l  l      |
 |             𝅘𝅥𝅯 |
 _________________```]])
-      else
-        message.channel:send("```" .. title .. "\n@" .. message.author.name .. lang.rdnot_message_1 .. uj.pronouns["their"] .. lang.rdnot_message_2 .. [[
-_________________
-| SR            |
-|               |
-|    \____/     |
-|    / TT \  /  |
-|   /|____|\/   |
-|     l  l      |
-|             𝅘𝅥𝅯 |
-_________________```]])
-      end
     elseif not cdb[v].spoiler then
-      if uj.lang == "ko" then 
-        message.channel:send{embed = {
-          color = 0x85c5ff,
-          title = title,
-          description = message.author.mentionString .. lang.pulled_message_1 .. cardname .. lang.pulled_message_2 .. cardname .. lang.pulled_message_3 .. lang.pulled_message_4 .. v .. lang.pulled_message_5,
-          image = {url = type(cdb[v].embed) == "table" and cdb[v].embed[math.random(#cdb[v].embed)] or cdb[v].embed}
-        }}
-      else
-        message.channel:send{embed = {
-          color = 0x85c5ff,
-          title = title,
-          description = message.author.mentionString .. lang.pulled_message_1 .. cardname .. lang.pulled_message_2 .. cardname .. lang.pulled_message_3 .. uj.pronouns["their"] .. lang.pulled_message_4 .. v .. lang.pulled_message_5,
-          image = {url = type(cdb[v].embed) == "table" and cdb[v].embed[math.random(#cdb[v].embed)] or cdb[v].embed}
-        }}
-      end
+      local msg = formatstring(lang.pulled_message, {message.author.mentionString, cardname, uj.pronouns["their"], v})
+      message.channel:send{embed = {
+        color = uj.embedc,
+        title = title,
+        description = msg,
+        image = {url = type(cdb[v].embed) == "table" and cdb[v].embed[math.random(#cdb[v].embed)] or cdb[v].embed},
+        footer = {text = "Season "..cdb[v].season}
+      }}
     else
       print("spider moments")
-      if uj.lang == "ko" then
+      local msg = formatstring(lang.pulled_message, {message.author.mentionString, cardname, uj.pronouns["their"], v})
         message.channel:send{
-          content = "**" .. title .. "**\n" .. message.author.mentionString .. lang.pulled_message_1 .. cardname .. lang.pulled_message_2 .. cardname .. lang.pulled_message_3 .. lang.pulled_message_4 .. v .. lang.pulled_message_5,
+          content = "**" .. title .. "**\n" .. msg,
           file = "card_images/SPOILER_" .. v .. ".png"
         }
-      else
-        message.channel:send{
-          content = "**" .. title .. "**\n" .. message.author.mentionString .. lang.pulled_message_1 .. cardname .. lang.pulled_message_2 .. cardname .. lang.pulled_message_3 .. uj.pronouns["their"] .. lang.pulled_message_4 .. v .. lang.pulled_message_5,
-          file = "card_images/SPOILER_" .. v .. ".png"
-        }
-      end
     end
     if not uj.togglecheckcard then
       if not uj.storage[v] then
-        message.channel:send(lang.not_in_storage_1 .. cardname .. lang.not_in_storage_2)
+        message.channel:send(formatstring(lang.not_in_storage, {cardname}))
       end
     end
   end
   if showacemessage then
-	message.channel:send('Because of '..uj.pronouns['their']..' **Ace of Hearts**, '..message.author.mentionString.. ' also got **10 tokens**!')
+    message.channel:send(formatstring(lang.ace_of_hearts, {uj.pronouns['their'], uj.pronouns['they']}))
   end
 end
 return command

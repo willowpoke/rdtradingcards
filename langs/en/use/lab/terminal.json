@@ -1,5 +1,6 @@
 {
 	"using_terminal": "Using Terminal...",
+	"using_terminal_upgrade": "Upgrading Terminal...",
 	
 	"logged_in": "`ERROR: USER ALREADY LOGGED IN`",
 	"savedata_not_found": "`ERROR: DATA NOT FOUND.`",
@@ -7,7 +8,7 @@
 	
 	"piss_message": "`peachy moment 😳😳😳`",
 	
-	"help_message": "`AVAILABLE COMMANDS: ",
+	"help_message": "AVAILABLE COMMANDS: ",
 	
 	"stats_message": "The **Terminal** prints out a slip of paper. It reads:",
 	"stats_timespulled": "Times Pulled: ",
@@ -39,18 +40,15 @@
 	
 	"emaillogs_title": "Email Logs",
 	
-	"upgrade_prompt_1": "Will you put a **Token** into the **Terminal?** (tokens remaining: ",
-	"upgrade_prompt_2": ")",
+	"upgrade_prompt": "Will you put a **Token** into the **Terminal?** (tokens remaining: {1})",
 	
-	"donated_terminal_1": "The **Terminal** whirrs happily. A printout lets you know that ",
-	"donated_terminal_2": " tokens have been donated so far.",
+	"donated_terminal": "The **Terminal** whirrs happily. A printout lets you know that {1} tokens have been donated so far.",
 	
 	"upgrade_no_tokens": "Unfortunately, you have no **Tokens** to your name.",
 	
 	"pull_title": "PULLING CARD... ERROR!",
 	"pull_keycard": "",
 	"pull_jammed": "`ERROR: CARD PRINTER JAMMED. PLEASE WAIT.`",
-	
-	"unknown_1": "`COMMAND \"",
-	"unknown_2": "\" NOT RECOGNIZED`",
+
+	"unknown": "`COMMAND \"{1}\" NOT RECOGNIZED`",
 }

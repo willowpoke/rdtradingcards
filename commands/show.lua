@@ -13,9 +13,9 @@ function command.run(message, mt)
 
   if not curfilename then
     if nopeeking then
-      message.channel:send(lang.error_nopeeking_1 .. mt[1] .. lang.error_nopeeking_2)
+      message.channel:send(formatstring(lang.error_nopeeking, {mt[1]}))
     else
-      message.channel:send(lang.no_item_1 .. mt[1] .. lang.no_item_2)
+      message.channel:send(formatstring(lang.no_item, {mt[1]}))
     end
     return
   end
@@ -23,36 +23,46 @@ function command.run(message, mt)
   if not ((uj.inventory[curfilename] or uj.storage[curfilename])) and not (shophas(curfilename) and not (uj.lastrob + 3 > sj.stocknum and uj.lastrob ~= 0)) then
     print("user doesnt have card")
     if nopeeking then
-      message.channel:send(lang.error_nopeeking_1 .. mt[1] .. lang.error_nopeeking_2)
+      message.channel:send(formatstring(lang.error_nopeeking, {mt[1]}))
     else
-      message.channel:send(lang.dont_have_1 .. cdb[curfilename].name .. lang.dont_have_2)
+      message.channel:send(formatstring(lang.dont_have, {cdb[curfilename].name}))
     end
     return
   end
 
   print("user has card")
-  if not cdb[curfilename].spoiler then
+  local card_data = cdb[curfilename]
+  if not card_data then
+    local placeholder = dpf.loadjson("langs/" .. uj.lang .. "/look/missingcard.json", "")
+    card_data = {
+      name = placeholder.name,
+      description = placeholder.description,
+      embed = "https://media.discordapp.net/attachments/1030420309947469904/1410325951287394438/guiguidc.png"
+    }
+  end
+
+  if not card_data.spoiler then
     local embeddescription = ""
-    if cdb[curfilename].description then
-      embeddescription = "\n\n*" .. lang.embeddescription .. "*\n> " .. cdb[curfilename].description
+    if card_data.description then
+      embeddescription = "\n\n*" .. lang.embeddescription .. "*\n> " .. card_data.description
     end
     message.channel:send{embed = {
-      color = 0x85c5ff,
+      color = uj.embedc,
       title = lang.showing_card,
-      description = 
-      lang.show_card_1 .. cdb[curfilename].name .. lang.show_card_2 .. curfilename .. lang.show_card_3 .. embeddescription,
+      description = formatstring(lang.show_card, {card_data.name, curfilename, embeddescription}),
       image = {
-        url = type(cdb[curfilename].embed) == "table" and cdb[curfilename].embed[math.random(#cdb[curfilename].embed)] or cdb[curfilename].embed
-      }
+        url = type(card_data.embed) == "table" and card_data.embed[math.random(#card_data.embed)] or card_data.embed
+      },
+      footer = {text = "Season "..card_data.season}
     }}
   else
     print("spiderrrrrrr")
     message.channel:send{
-      content = lang.show_card_1 .. cdb[curfilename].name .. lang.show_card_2 .. curfilename .. lang.show_card_3,
+      content = formatstring(lang.show_card, {card_data.name, curfilename}),
       file = "card_images/SPOILER_" .. curfilename .. ".png"
     }
-    if cdb[curfilename].description then
-      message.channel:send(lang.embeddescription .. "\n> " .. cdb[curfilename].description)
+    if card_data.description then
+      message.channel:send(lang.embeddescription .. "\n> " .. card_data.description)
     end
   end
 end

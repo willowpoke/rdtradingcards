@@ -10,45 +10,26 @@ local time = sw:getTime()
     return
   end
   
-  local cooldown = 23/24
+  local cooldown = config.cooldowns.pray
   if uj.equipped == "faithfulnecklace" then
-    cooldown = 20/24
+    cooldown = config.cooldowns.pray_necklace
   end
 
   if not uj.lastprayer then
-    uj.lastprayer = -3
+    uj.lastprayer = -30
   end
 
-  if uj.lastprayer + cooldown > time:toDays() then
+  if uj.lastprayer + cooldown > time:toHours() then
     --extremely jank implementation, please make this cleaner if possible
-    local minutesleft = math.ceil(uj.lastprayer * 1440 - time:toMinutes() + cooldown * 1440)
-    local durationtext = ""
-    if math.floor(minutesleft / 60) > 0 then
-      durationtext = math.floor(minutesleft / 60) .. lang.time_hour
-      if lang.needs_plural_s == true then
-        if math.floor(minutesleft / 60) ~= 1 then
-          durationtext = durationtext .. lang.time_plural_s
-        end
-      end
-    end
-    if minutesleft % 60 > 0 then
-      if durationtext ~= "" then
-        durationtext = durationtext .. lang.time_and
-      end
-      durationtext = durationtext .. minutesleft % 60 .. lang.time_minute
-      if lang.needs_plural_s == true then
-        if minutesleft % 60 ~= 1 then
-          durationtext = durationtext .. lang.time_plural_s
-        end
-      end
-    end
-    message.channel:send(lang.wait_message_1 .. durationtext .. lang.wait_message_2)
+    local minutesleft = math.ceil(uj.lastprayer * 60 - time:toMinutes() + cooldown * 60)
+    local durationtext = formattime(minutesleft, uj.lang)
+    message.channel:send(formatstring(lang.wait_message, {durationtext}))
     return
   end
   
   uj.tokens = uj.tokens and uj.tokens + 1 or 1
   uj.timesprayed = uj.timesprayed and uj.timesprayed + 1 or 1
-  uj.lastprayer = time:toDays()
+  uj.lastprayer = time:toHours()
   
   if uj.sodapt then
     if uj.sodapt.pray then
@@ -64,7 +45,7 @@ local time = sw:getTime()
 
   message.channel:send(lang.prayed_message)
   if not uj.togglechecktoken then
-    message.channel:send(lang.checktoken_1 .. uj.tokens .. lang.checktoken_2 .. (uj.tokens ~= 1 and lang.needs_plural_s == true and lang.time_plural_s or "") .. lang.checktoken_3)
+    message.channel:send(formatstring(lang.checktoken, {uj.tokens}, lang.time_plural_s))
   end
 end
 return command

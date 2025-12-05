@@ -32,12 +32,12 @@ function command.run(message, mt)
   elseif wj.ws >= 702 and (request == "shop" or request == "quaintshop" or request == "quaint shop" or request == "the quaint shop" or (uj.lang ~= "en" and request == lang.request_shop_1 or request == lang.request_shop_2 or request == lang.request_shop_3 or request == lang.locations_shop)) then
     success = true
     newroom = 3
-  elseif wj.ws >= 904 and (request == "hallway" or request == "darkhallway" or request == "the dark hallway" or request == "dark hallway" or (uj.lang ~= "en" and request == lang.request_hallway_1 or request == lang.request_hallway_2 or request == lang.locations_hallway)) then
-    success = true
-    newroom = 4
-  elseif wj.ws >= 905 and (request == "casino" or request == "shadycasino" or request == "the shady casino" or request == "shady casino" or (uj.lang ~= "en" and request == lang.request_casino_1 or request == lang.request_casino_2 or request == lang.locations_casino)) then
-    success = true
-    newroom = 5
+  -- elseif wj.ws >= 9999 and (request == "hallway" or request == "darkhallway" or request == "the dark hallway" or request == "dark hallway" or (uj.lang ~= "en" and request == lang.request_hallway_1 or request == lang.request_hallway_2 or request == lang.locations_hallway)) then
+  --   success = true
+  --   newroom = 4
+  -- elseif wj.ws >= 9999 and (request == "casino" or request == "shadycasino" or request == "the shady casino" or request == "shady casino" or (uj.lang ~= "en" and request == lang.request_casino_1 or request == lang.request_casino_2 or request == lang.locations_casino)) then
+  --   success = true
+  --   newroom = 5
   end
   
   
@@ -45,13 +45,13 @@ function command.run(message, mt)
     print("newroom is ".. newroom)
     local sj = dpf.loadjson("savedata/shop.json", defaultshopsave)
     if newroom == uj.room then
-      message.channel:send(lang.already_in_1 .. locations[newroom+1] .. lang.already_in_2)
+      message.channel:send(formatstring(lang.already_in, {locations[newroom+1]}))
       return
     elseif newroom == 3 and uj.lastrob + 4 > sj.stocknum and uj.lastrob ~= 0 then
       lang = dpf.loadjson("langs/" .. uj.lang .. "/rob.json")
       local time = sw:getTime()
       local stocksleft = uj.lastrob + 4 - sj.stocknum
-      local stockstring = lang.more_restock_1 .. stocksleft .. lang.more_restock_2
+      local stockstring = formatstring(lang.more_restock, {stocksleft})
       if lang.needs_plural_s == true then
         if stocksleft > 1 then
           stockstring = stockstring .. lang.plural_s
@@ -59,44 +59,22 @@ function command.run(message, mt)
       end
       local minutesleft = math.ceil((26/24 - time:toDays() + sj.lastrefresh) * 24 * 60)
       
-      local durationtext = ""
-      if math.floor(minutesleft / 60) > 0 then
-        durationtext = math.floor(minutesleft / 60) .. lang.time_hour
-        if lang.needs_plural_s == true then
-          if math.floor(minutesleft / 60) ~= 1 then 
-            durationtext = durationtext .. lang.plural_s 
-          end
-        end
-      end
-      if minutesleft % 60 > 0 then
-        if durationtext ~= "" then
-          durationtext = durationtext .. lang.time_and
-        end
-        durationtext = durationtext .. minutesleft % 60 .. lang.time_minute
-        if lang.needs_plural_s == true then
-          if minutesleft % 60 ~= 1 then
-            durationtext = durationtext .. lang.plural_s 
-          end
-        end
-      end
+      local durationtext = formattime(minutesleft, uj.lang)
       if uj.lastrob + 3 == sj.stocknum then
-        message.channel:send(lang.blacklist_next_1 .. durationtext .. lang.blacklist_next_2)
+        message.channel:send(formatstring(lang.blacklist_next, {durationtext}))
       else
-        message.channel:send(lang.blacklist_1 .. stockstring .. lang.blacklist_2 .. durationtext .. lang.blacklist_3)
+        message.channel:send(formatstring(lang.blacklist, {stockstring, durationtext}))
       end
       return "blacklisted"
     else
       uj.room = newroom
-      if uj.lang == "ko" and newroom == 2 then
-        message.channel:send(lang.room_changed_1 .. locations[newroom+1] .. lang.room_changed_2 .. lang.eu .. lang.room_changed_3)
-      else
-        message.channel:send(lang.room_changed_1 .. locations[newroom+1] .. lang.room_changed_2 .. lang.room_changed_3)
-      end
+      local eu = uj.lang == "ko" and lang.eu or ""
+      message.channel:send(formatstring(lang.room_changed, {locations[newroom+1], eu}))
       dpf.savejson("savedata/" .. message.author.id .. ".json",uj)
       return uj
     end
   else
-    message.channel:send(lang.no_room_1 .. mt[1] .. lang.no_room_2)
+    message.channel:send(formatstring(lang.no_room, {mt[1]}))
   end
 
 end
