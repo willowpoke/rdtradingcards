@@ -49,8 +49,8 @@ function command.run(message, mt)
         print("filtering for rarity "..rarity)
       end
     else
-      if value[0] ~= '-' then
-        filename = usernametojson(value)
+      local filename = usernametojson(value)
+      if filename then
         uj = dpf.loadjson(filename, defaultjson)
       end
     end
@@ -62,7 +62,7 @@ function command.run(message, mt)
   
   if filterSeasonsCount > 0 then
     for k,v in pairs(invfilter) do
-      if not filterSeasons[cdb[k].season or -1] then
+      if not filterSeasons[cdb[k] and cdb[k].season or -1] then
         invfilter[k] = nil
       end
     end
@@ -71,7 +71,7 @@ function command.run(message, mt)
 
   if filterRaritiesCount > 0 then
     for k,v in pairs(invfilter) do
-      if not filterRarities[cdb[k].type and rarities_invert[cdb[k].type] or "null"] then
+      if not filterRarities[cdb[k] and cdb[k].type and rarities_invert[cdb[k].type] or "null"] then
         invfilter[k] = nil
       end
     end
@@ -88,9 +88,9 @@ function command.run(message, mt)
   
 	for k,v in pairs(invfilter) do
 		table.insert(invtable,
-			"**" .. (cdb[k].name or placeholder.card) .. "** x" .. v ..
+			"**" .. (cdb[k] and cdb[k].name or placeholder.card) .. "** x" .. v ..
 			(enableShortNames and (" ("..k..") ") or "") ..
-			(enableSeason and formatstring(lang.season, {cdb[k].season or -1}) or "")
+			(enableSeason and formatstring(lang.season, {cdb[k] and cdb[k].season or -1}) or "")
 			.."\n"
 		)
 	end

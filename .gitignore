@@ -1,4 +1,5 @@
 /privatestuff.*
+config.lua
 savedata
 discordia.log
 gateway.json
