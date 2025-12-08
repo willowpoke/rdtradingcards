@@ -21,7 +21,7 @@ return {
       local rarecount = 0
 
       for k, v in pairs(uj.storage) do
-        if cdb[k].type == 'Rare' then rarecount = rarecount + v end
+        if cdb[k] and cdb[k].type == 'Rare' then rarecount = rarecount + v end
         if rarecount >= 20 then return true end
       end
     end
@@ -32,7 +32,7 @@ return {
       local superrarecount = 0
 
       for k, v in pairs(uj.storage) do
-        if cdb[k].type == 'Super Rare' then superrarecount = superrarecount + v end
+        if cdb[k] and cdb[k].type == 'Super Rare' then superrarecount = superrarecount + v end
         if superrarecount >= 20 then return true end
       end
     end
@@ -43,7 +43,7 @@ return {
       local ultrararecount = 0
 
       for k, v in pairs(uj.storage) do
-        if cdb[k].type == 'Ultra Rare' then ultrararecount = ultrararecount + v end
+        if cdb[k] and cdb[k].type == 'Ultra Rare' then ultrararecount = ultrararecount + v end
         if ultrararecount >= 20 then return true end
       end
     end
