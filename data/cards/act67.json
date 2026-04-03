@@ -1,85 +1,89 @@
 {
-  "groupname": "1.0 update",
-  "basechance": 3,
-  "cards": [
-	{
-	  "chance": 2,
-	  "filename": "totellyou",
-	  "name": "Something To Tell You",
-	  "type": "Super Rare",
-	  "description": "(Level by 7th Beat Games)",
-	  "smell": "Young Love",
-	  "season": 11,
-	  "bonuses": {
-		"valentinesdaycard": true,
-	  },
-	  "embed": "https://media.discordapp.net/attachments/1030420309947469904/1453055271076233368/SPOILER_totellyou.png"
-	},
-	{
-	  "chance": 2,
-	  "filename": "welcomeback",
-	  "name": "Welcome Back",
-	  "type": "Super Rare",
-	  "description": "(Level by 7th Beat Games)",
-	  "smell": "an old boss",
-	  "season": 11,
-	  "bonuses": {},
-	  "embed": "https://media.discordapp.net/attachments/1030420309947469904/1453055271587811449/SPOILER_welcomeback.png"
-	},
-	{
-	  "chance": 2,
-	  "filename": "bossfight",
-	  "name": "Boss Fight",
-	  "type": "Super Rare",
-	  "description": "(Level by 7th Beat Games)",
-	  "smell": "",
-	  "season": 11,
-	  "bonuses": {},
-	  "embed": "https://media.discordapp.net/attachments/1030420309947469904/1453055270505943050/SPOILER_bossfight.png"
-	},
-	{
-	  "chance": 2,
-	  "filename": "blurred",
-	  "name": "Blurred",
-	  "type": "Super Rare",
-	  "description": "(Level by 7th Beat Games)",
-	  "smell": "dusty papers, just like you remember it",
-	  "season": 11,
-	  "bonuses": {},
-	  "embed": "https://media.discordapp.net/attachments/1030420309947469904/1453055270023335937/SPOILER_blurred.png"
-	},
-	{
-	  "chance": 1,
-	  "filename": "bitterness",
-	  "name": "Bitterness",
-	  "type": "Ultra Rare",
-	  "description": "(Level by 7th Beat Games)",
-	  "smell": "Neglect",
-	  "season": 11,
-	  "bonuses": {},
-	  "embed": "https://media.discordapp.net/attachments/1030420309947469904/1453055269507563693/SPOILER_bittertimes.png"
-	},
-	{
-	  "chance": 1,
-	  "filename": "miracledefibrillator",
-	  "name": "Miracle Defibrillator",
-	  "type": "Ultra Rare",
-	  "description": "(Level by 7th Beat Games)",
-	  "smell": "The Glitch to end all Glitches",
-	  "season": 11,
-	  "bonuses": {},
-	  "embed": "https://media.discordapp.net/attachments/1030420309947469904/1410325951287394438/guiguidc.png"
-	},
-	{
-	  "chance": 1,
-	  "filename": "colesong",
-	  "name": "Miracle Defibrillator (Cole's Song)",
-	  "type": "Ultra Rare",
-	  "description": "(Level by 7th Beat Games)",
-	  "smell": "The Final Stretch",
-	  "season": 11,
-	  "bonuses": {},
-	  "embed": "https://media.discordapp.net/attachments/1030420309947469904/1410325951287394438/guiguidc.png"
-	}
-  ]
+    "groupname": "1.0 update",
+    "basechance": 3,
+    "cards": [
+        {
+        "chance": 2,
+        "filename": "totellyou",
+        "name": "Something To Tell You",
+        "type": "Super Rare",
+        "description": "(Level by 7th Beat Games)",
+        "smell": "Nervousness",
+        "season": 11,
+        "bonuses": {
+            "valentinesdaycard": true
+        },
+        "embed": "https://media.discordapp.net/attachments/829197797789532181/1489646626741162177/totellyou.png"
+        },
+        {
+        "chance": 2,
+        "filename": "welcomeback",
+        "name": "Welcome Back",
+        "type": "Super Rare",
+        "description": "(Level by 7th Beat Games)",
+        "smell": "Rotten Memories",
+        "season": 11,
+        "bonuses": {},
+        "embed": "https://media.discordapp.net/attachments/829197797789532181/1489646627248541726/welcomeback.png"
+        },
+        {
+        "chance": 2,
+        "filename": "bossfight",
+        "name": "Boss Fight",
+        "type": "Super Rare",
+        "description": "(Level by 7th Beat Games)",
+        "smell": "Reckoning",
+        "season": 11,
+        "bonuses": {},
+        "embed": "https://media.discordapp.net/attachments/829197797789532181/1489646626216612130/bossfight.png"
+        },
+        {
+        "chance": 2,
+        "filename": "blurred",
+        "name": "Blurred",
+        "type": "Super Rare",
+        "description": "(Level by 7th Beat Games)",
+        "smell": "Distant Memories",
+        "season": 11,
+        "bonuses": {},
+        "embed": "https://media.discordapp.net/attachments/829197797789532181/1489646625763758200/blurred.png"
+        },
+        {
+        "chance": 1,
+        "filename": "bittertimes",
+        "name": "Bitter Times",
+        "type": "Ultra Rare",
+        "description": "(Level by 7th Beat Games)",
+        "smell": "Coping Mechanisms",
+        "season": 11,
+        "bonuses": {},
+        "embed": "https://media.discordapp.net/attachments/829197797789532181/1489646625289932921/bittertimes.png"
+        },
+        {
+        "chance": 1,
+        "filename": "miracled",
+        "name": "Miracle Defibllirator",
+        "type": "Ultra Rare",
+        "description": "(Level by 7th Beat Games)",
+        "smell": "Reality",
+        "season": 11,
+        "bonuses": {
+            "filmreel": true
+        },
+        "embed": "https://media.discordapp.net/attachments/829197797789532181/1489655044352770228/7-x.gif"
+        },
+        {
+        "chance": 1,
+        "filename": "colessong",
+        "name": "Miracle Defibllirator (Cole's Song)",
+        "type": "Ultra Rare",
+        "description": "(Level by 7th Beat Games)",
+        "smell": "Wires",
+        "season": 11,
+        "bonuses": {
+            "filmreel": true
+        },
+        "embed": "https://media.discordapp.net/attachments/1059208320864501841/1489661904598208603/7-x2.gif"
+        }
+    ]
 }
