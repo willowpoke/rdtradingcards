@@ -1,0 +1,45 @@
+{
+      "groupname": "window",
+      "basechance": 3,
+      "cards": [{
+          "chance": 3,
+          "filename": "windowr",
+          "name": "Windows (Rare)",
+          "type": "Rare",
+          "description": "(Art by Het)",
+          "smell": "Reality Bending",
+          "season": 11,
+          "bonuses": {
+            "scribblednotepad": true,
+            "okamiiscollar": true
+          },
+          "embed": "https://media.discordapp.net/attachments/829197797789532181/1493221568354979900/windowsr.png"
+        },
+        {
+          "chance": 2,
+          "filename": "windowsr",
+          "name": "Windows (Super Rare)",
+          "type": "Super Rare",
+          "description": "(Art by WolfPlay013)",
+          "smell": "Reality Bending",
+          "season": 11,
+          "bonuses": {
+            "scribblednotepad": true
+          },
+          "embed": "https://media.discordapp.net/attachments/829197797789532181/1493282222860665113/windowssr.png"
+        },
+        {
+          "chance": 1,
+          "filename": "windowur",
+          "name": "Windows (Ultra Rare)",
+          "type": "Ultra Rare",
+          "description": "(Art by #Guigui)",
+          "smell": "Reality Bending",
+          "season": 11,
+          "bonuses": {
+            "scribblednotepad": true
+          },
+          "embed": "https://media.discordapp.net/attachments/1030420309947469904/1410325951287394438/guiguidc.png"
+        }
+      ]
+    }
