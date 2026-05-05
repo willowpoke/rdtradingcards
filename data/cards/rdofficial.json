@@ -846,6 +846,8 @@
 	  "smell": "Stomach Aches",
 	  "season": 8,
 	  "bonuses": {
+		"lostnametag": true,
+		"deluxebirdseed": true,
 		"collabplaceholder": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/984229865169506364/tapestopnight.png"
@@ -864,6 +866,62 @@
 		"collabplaceholder": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/984230412698128384/90sdecision.png"
+	},
+	{
+	  "chance": 2,
+	  "filename": "meetandtweet",
+	  "name": "Meet and Tweet",
+	  "type": "Super Rare",
+	  "description": "(Level by 7th Beat Games, Collaborated with Bits and Bops)",
+	  "smell": "Fresh air",
+	  "season": 11,
+	  "bonuses": {
+		"deluxebirdseed": true,
+		"collabplaceholder": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1501295459438821456/meetandtweet.png"
+	},
+	{
+	  "chance": 2,
+	  "filename": "kingdom",
+	  "name": "Kingdom of Balloons",
+	  "type": "Super Rare",
+	  "description": "(Level by 7th Beat Games, Collaborated with Circle of Sparks)",
+	  "smell": "Rubber",
+	  "season": 11,
+	  "bonuses": {
+		"collabplaceholder": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1501295459438821456/meetandtweet.png"
+	},
+	{
+	  "chance": 2,
+	  "filename": "fixations",
+	  "name": "Fixations Toward the Stars",
+	  "type": "Super Rare",
+	  "description": "(Level by 7th Beat Games, Collaborated with vivid/stasis)",
+	  "smell": "Flowers",
+	  "season": 11,
+	  "bonuses": {
+		"collabplaceholder": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1501313867991486584/fixations.png"
+	},
+	{
+	  "chance": 2,
+	  "filename": "publicocautivo",
+	  "name": "público cautivo",
+	  "type": "Super Rare",
+	  "description": "(Level by 7th Beat Games, Collaborated with Beatblock)",
+	  "smell": "Vinyl Records",
+	  "season": 11,
+	  "bonuses": {
+		"valentinesdaycard": true,
+		"deluxebirdseed": true,
+		"cafemixtape": true,
+		"collabplaceholder": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1501319096019718225/publico_cautivo.png"
 	}
   ]
 }
