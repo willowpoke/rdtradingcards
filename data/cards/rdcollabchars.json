@@ -183,6 +183,20 @@
 				"collabplaceholder": true
 			},
 			"embed": "https://media.discordapp.net/attachments/829197797789532181/1489713638435455286/luner.png"
+		},
+		{
+			"chance": 3,
+			"filename": "crankyr",
+			"name": "Cranky (Rare)",
+			"type": "Rare",
+			"description": "(Art by CV35W)",
+			"smell": "Polystyrene",
+			"season": 11,
+			"bonuses": {
+				"okamiiscollar": true,
+				"collabplaceholder": true
+			},
+			"embed": "https://media.discordapp.net/attachments/829197797789532181/1489713638435455286/luner.png"
 		}
 	]
 }
