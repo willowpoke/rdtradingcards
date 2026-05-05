@@ -6,6 +6,7 @@ gateway.json
 deps
 vips
 vips_out
+vips.lua
 lit
 luvi
 luvit
