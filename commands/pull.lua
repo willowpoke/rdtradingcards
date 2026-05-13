@@ -178,7 +178,7 @@ local time = sw:getTime()
     if i == 3 then title = lang.pulled_tripleclick end
     if v == "samarrrai" then title = "Ahoy Matey!" end
 
-    newstatus = formatstring("Inventory: {0} | Storage: {0}", {uj.inventory[v] or 0, uj.storage[v] or 0})
+    newstatus = formatstring("Inventory: {1} | Storage: {2}", {uj.inventory[v] or 0, uj.storage[v] or 0})
     if not uj.storage[v] then
       newstatus = "[NEW CARD!]"
     end
