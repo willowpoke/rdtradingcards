@@ -28,5 +28,7 @@
 	"cryopod_full": "but your **Spare Cryopod** is full, because it has already {1} pulls in it.",
 	"cryopod_filled": "however your **Spare Cryopod** was able to store {1} of them.",
 	"cryopod_partly": "however your **Spare Cryopod** was able to store all {1} of them, bringing your total stored pulls to {2}.",
-	"cryopod_pull": "You're on cooldown, but you have spare pulls stored in your **Spare Cryopod**, which means you can pull anyways! (You now have **{1}** spare pull{1s} remaining)"
+	"cryopod_pull": "You're on cooldown, but you have spare pulls stored in your **Spare Cryopod**, which means you can pull anyways! (You now have **{1}** spare pull{1s} remaining)",
+
+	"tutorial": "**You got your first card!**\nYou can put this card in your storage with {1}store, and start your own collection of cards!"
 }

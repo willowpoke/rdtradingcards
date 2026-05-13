@@ -10,5 +10,7 @@
 	"wait_message": "Please wait {1} before praying again.",
 	
 	"prayed_message": "The Card Gods have listened to your plight. A **Token** appears in your pocket.",
-	"checktoken": "You currently have {1} **Token{1s}**."
+	"checktoken": "You currently have {1} **Token{1s}**.",
+
+	"tutorial": "You might find ways to use it by **look**ing around."
 }

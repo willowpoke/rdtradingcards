@@ -40,12 +40,20 @@ local time = sw:getTime()
       end
     end
   end
+
+  local show_tutorial_message = true
+  if uj.has_seen_tutorials.pray then
+    show_tutorial_message = false
+  end
   
   dpf.savejson("savedata/" .. message.author.id .. ".json",uj)
 
   message.channel:send(lang.prayed_message)
   if not uj.togglechecktoken then
     message.channel:send(formatstring(lang.checktoken, {uj.tokens}, lang.time_plural_s))
+  end
+  if show_tutorial_message then
+    message.channel:send(formatstring(lang.tutorial, {prefix}))
   end
 end
 return command

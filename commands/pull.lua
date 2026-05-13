@@ -155,6 +155,13 @@ local time = sw:getTime()
 	showacemessage = true
   end
 
+  local show_tutorial_message = true
+  if uj.has_seen_tutorials.pull then
+    show_tutorial_message = false
+  else
+    uj.has_seen_tutorials.pull = true
+  end
+
   dpf.savejson("savedata/" .. message.author.id .. ".json",uj)
 
 	if doinfodeskpull then
@@ -171,6 +178,13 @@ local time = sw:getTime()
     if i == 3 then title = lang.pulled_tripleclick end
     if v == "samarrrai" then title = "Ahoy Matey!" end
 
+    newstatus = formatstring("Inventory: {0} | Storage: {0}", {uj.inventory[v] or 0, uj.storage[v] or 0})
+    if not uj.storage[v] then
+      newstatus = "[NEW CARD!]"
+    end
+
+    footer = "Season "..cdb[v].season.." | "..newstatus
+
     if v == "rdnot" then
       message.channel:send("```" .. title .. "\n@" .. formatstring(lang.rdnot_message, {message.author.name, uj.pronouns["their"]}) .. [[
 _________________
@@ -181,7 +195,7 @@ _________________
 |   /|____|\/   |
 |     l  l      |
 |             𝅘𝅥𝅯 |
-_________________```]])
+_________________```]] .. "\n" .. footer)
     elseif not cdb[v].spoiler then
       local msg = formatstring(lang.pulled_message, {message.author.mentionString, cardname, uj.pronouns["their"], v})
       message.channel:send{embed = {
@@ -189,7 +203,7 @@ _________________```]])
         title = title,
         description = msg,
         image = {url = type(cdb[v].embed) == "table" and cdb[v].embed[math.random(#cdb[v].embed)] or cdb[v].embed},
-        footer = {text = "Season "..cdb[v].season}
+        footer = {text = footer}
       }}
     else
       print("spider moments")
@@ -198,12 +212,16 @@ _________________```]])
           content = "**" .. title .. "**\n" .. msg,
           file = "card_images/SPOILER_" .. v .. ".png"
         }
+        message.channel:send("-# "..footer)
     end
-    if not uj.togglecheckcard then
-      if not uj.storage[v] then
-        message.channel:send(formatstring(lang.not_in_storage, {cardname}))
-      end
-    end
+    -- if not uj.togglecheckcard then
+    --   if not uj.storage[v] then
+    --     message.channel:send(formatstring(lang.not_in_storage, {cardname}))
+    --   end
+    -- end
+  end
+  if show_tutorial_message then
+    message.channel:send(formatstring(lang.tutorial, {prefix}))
   end
   if showacemessage then
     message.channel:send(formatstring(lang.ace_of_hearts, {uj.pronouns['their'], uj.pronouns['they']}))

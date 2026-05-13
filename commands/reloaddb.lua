@@ -91,6 +91,10 @@ function command.run(message, mt, overwrite)
       --   brown = {},
       -- },
       -- currentoffer = "",
+      has_seen_tutorials = {
+        pull = false,
+        pray = false,
+      },
       pronouns = {
         selection = "they",
         their = "their",
@@ -746,6 +750,9 @@ function command.run(message, mt, overwrite)
           if not uj.embedc then
             uj.embedc = embed_colors["default"].colorcode
           end
+          if not uj.has_seen_tutorials then
+            uj.has_seen_tutorials = {}
+          end
           -- if not uj.unlocked_colors then
           --   uj.unlocked_colors = {default = true}
           -- end
@@ -976,7 +983,7 @@ function command.run(message, mt, overwrite)
 
     _G['formatstring'] = function (baseString, objectsToAdd, plural_s)
       -- Replace the base {X}
-      local output = baseString
+      local output = baseString or "[NO STRING PLEASE REPORT]"
 
       -- print(output)
       
