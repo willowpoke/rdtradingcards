@@ -211,7 +211,7 @@ function command.run(message, mt, overwrite)
     _G["starrating_invert"] = {}
     for k,v in pairs(starrating) do 
       for _, v2 in ipairs(v) do
-        _G["rarities_invert"][v2] = k
+        _G["starrating_invert"][v2] = k
       end
     end
     
@@ -352,10 +352,13 @@ function command.run(message, mt, overwrite)
         if rarities_invert[x.type] then
           local rarity = rarities_invert[x.type]
           local rating = starrating_invert[rarity]
+          --print("Rating of "..rarity..": "..rating)
           if not rarcardtable[rarity] then
+            print("making rarity "..rarity)
             rarcardtable[rarity] = {}
           end
           if not starcardtable[rating] then 
+            print("making rating "..rating)
             starcardtable[rating] = {}
           end
           table.insert(rarcardtable[rarity], x.filename)

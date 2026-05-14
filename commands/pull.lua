@@ -123,7 +123,8 @@ local time = sw:getTime()
       local rarity = uj.conspt:sub(8)
       pulledcards = { rand_from_table(rarcardtable[rarity]) }
     elseif uj.conspt:sub(1, 5) == "star_" then
-      local star = tonumber(uj.conspt:sub(5))
+      local star = tonumber(uj.conspt:sub(6))
+      print("looking for a star of rating "..star)
       pulledcards = { rand_from_table(starcardtable[star]) }
     else
       pulledcards = { rand_from_table(constable[uj.conspt]) }
