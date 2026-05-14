@@ -64,8 +64,7 @@
 	  "smell": "Old Friendship",
 	  "season": 6,
 	  "bonuses": {
-		"valentinesdaycard": true,
-		"pocketdimension": true
+		"valentinesdaycard": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/849106277556944936/loganalt.png"
 	},

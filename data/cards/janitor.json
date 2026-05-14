@@ -49,8 +49,7 @@
 	  "smell": "Organic Products",
 	  "season": 8,
 	  "bonuses": {
-		"oversizedstethoscope": true,
-		"pocketdimension": true
+		"oversizedstethoscope": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/939372170176524288/janitoralt.png"
 	},

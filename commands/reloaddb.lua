@@ -198,8 +198,22 @@ function command.run(message, mt, overwrite)
       altalt = "Alternate Alternate",
       pico8 = "PICO-8",
     }
+    _G["rarities_alternate"] = {"alt", "dcalt", "altalt"}
     _G["rarities_invert"] = {}
     for k,v in pairs(rarities) do _G["rarities_invert"][v] = k end
+    _G["starrating"] = {
+      [1] = {"r"},
+      [2] = {"sr", "dcr", "pico8"},
+      [3] = {"ur", "dcsr"},
+      [4] = {"dc", "dcur"},
+      [5] = rarities_alternate
+    }
+    _G["starrating_invert"] = {}
+    for k,v in pairs(starrating) do 
+      for _, v2 in ipairs(v) do
+        _G["rarities_invert"][v2] = k
+      end
+    end
     
     _G['amtable'] = {
       pyrowmid = {"strange machine", "machine", "panda"},
@@ -284,11 +298,14 @@ function command.run(message, mt, overwrite)
     _G['constable'] = {}
     _G['ptablenc'] = {}
     _G['constablenc'] = {}
+    _G['rarcardtable'] = {}
+    _G['starcardtable'] = {}
+    _G['weightedseasontable'] = {}
     local iterateitemdb = itemdb
     iterateitemdb["aboveur"] = {}
     iterateitemdb["quantummouse"] = {}
     iterateitemdb["oldfiles"] = {}
-    iterateitemdb["pocketdimension"] = {}
+    -- iterateitemdb["pocketdimension"] = {}
 
     for k, q in pairs(iterateitemdb) do
       ptable[k] = {}
@@ -313,15 +330,6 @@ function command.run(message, mt, overwrite)
                 table.insert(ptablenc[k],x.filename)
             end
           end
-          if k == "nothing" then
-            if not constable["season"..x.season] then
-              print("making season"..x.season)
-              constable["season"..x.season] = {}
-            end
-            for y = 1, (cdata.basemult * v.basechance * x.chance) do
-              table.insert(constable["season"..x.season], x.filename)
-            end
-          end
           if k == "quantummouse" and (x.type == "Rare" or x.type == "Super Rare" or x.type == "Ultra Rare") then
             for y = 1, (cdata.basemult * v.basechance * x.chance) do
               table.insert(constable[k],x.filename)
@@ -331,13 +339,37 @@ function command.run(message, mt, overwrite)
       end
     end
 
+    iterateitemdb["pocketdimension"] = {}
+
     for i, v in ipairs(cdata.groups) do
       for w, x in ipairs(v.cards) do
         cdb[x.filename] = x
         if not seasontable[x.season] then 
+          print("making season"..x.season)
           seasontable[x.season] = {}
+          weightedseasontable[x.season] = {}
+        end
+        if rarities_invert[x.type] then
+          local rarity = rarities_invert[x.type]
+          local rating = starrating_invert[rarity]
+          if not rarcardtable[rarity] then
+            rarcardtable[rarity] = {}
+          end
+          if not starcardtable[rating] then 
+            starcardtable[rating] = {}
+          end
+          table.insert(rarcardtable[rarity], x.filename)
+          table.insert(starcardtable[rating], x.filename)
+          if rating == 5 then -- is this a good idea?
+            table.insert(iterateitemdb["pocketdimension"], x.filename)
+          end
+        else
+          print(formatstring("[ERROR] Card {0} has invalid rarity: {1}", {x.filename, x.type}))
         end
         table.insert(seasontable[x.season], x.filename)
+        for y = 1, (cdata.basemult * v.basechance * x.chance) do
+          table.insert(weightedseasontable[x.season], x.filename)
+        end
       end
     end
 

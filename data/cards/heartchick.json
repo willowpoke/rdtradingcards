@@ -63,8 +63,7 @@
 	  "smell": "Scratchless Eggshells",
 	  "season": 5,
 	  "bonuses": {
-		"deluxebirdseed": true,
-		"pocketdimension": true
+		"deluxebirdseed": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/839199088058433566/heartchickalt.png"
 	}

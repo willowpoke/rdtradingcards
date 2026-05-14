@@ -65,8 +65,7 @@
 	  "season": 11,
 	  "spoiler": true,
 	  "bonuses": {
-		"charcoalpencil": true,
-        "pocketdimension": true
+		"charcoalpencil": true
 	  },
 	  "embed": "https://media.discordapp.net/attachments/1170130183286706246/1170144153829650564/mineralt.png"
 	},

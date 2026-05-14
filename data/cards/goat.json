@@ -67,8 +67,7 @@
 	  "smell": "Watchmen",
 	  "season": 8,
 	  "bonuses": {
-		"swirlymarbles": true,
-		"pocketdimension": true
+		"swirlymarbles": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/983996630984433724/goatalt.png"
 	}

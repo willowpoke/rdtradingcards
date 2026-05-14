@@ -64,8 +64,7 @@
 	  "smell": "Toenails",
 	  "season": 5,
 	  "bonuses": {
-		"oversizedstethoscope": true,
-		"pocketdimension": true
+		"oversizedstethoscope": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/839233681624137738/internalt.png"
 	},
@@ -80,8 +79,7 @@
 	  "bonuses": {
 		"oversizedstethoscope": true,
 		"aboveur": true,
-		"oldfiles": true,
-		"pocketdimension": true
+		"oldfiles": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/873172939997077504/interndc_alt.png"
 	},

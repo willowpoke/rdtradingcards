@@ -65,8 +65,7 @@
 	  "smell": "Trumpets",
 	  "season": 8,
 	  "bonuses": {
-		"swirlymarbles": true,
-		"pocketdimension": true
+		"swirlymarbles": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/983996418865901609/pigalt.png"
 	}

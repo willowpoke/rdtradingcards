@@ -64,8 +64,7 @@
 	  "smell": "Bluetooth",
 	  "season": 5,
 	  "bonuses": {
-		"rustysword": true,
-		"pocketdimension": true
+		"rustysword": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/839227753538912287/insomniacalt.png"
 	},

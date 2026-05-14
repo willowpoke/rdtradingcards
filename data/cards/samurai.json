@@ -64,8 +64,7 @@
           "smell": "Plastic",
           "season": 5,
           "bonuses": {
-            "rustysword": true,
-            "pocketdimension": true
+            "rustysword": true
           },
           "embed": "https://cdn.discordapp.com/attachments/829197797789532181/839226590885314570/samuraialt.png"
         },
@@ -80,8 +79,7 @@
           "bonuses": {
             "rustysword": true,
             "aboveur": true,
-            "oldfiles": true,
-            "pocketdimension": true
+            "oldfiles": true
           },
           "embed": "https://cdn.discordapp.com/attachments/829197797789532181/849113790711595008/samuraidc_alt.png"
         },
@@ -95,7 +93,6 @@
           "season": 8,
           "bonuses": {
             "rustysword": true,
-            "pocketdimension": true,
             "aboveur": true
           },
           "embed": "https://cdn.discordapp.com/attachments/829197797789532181/964269545000951858/samuraialtalt.png"

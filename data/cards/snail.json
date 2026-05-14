@@ -64,8 +64,7 @@
 	  "smell": "x0.25",
 	  "season": 8,
 	  "bonuses": {
-		"swirlymarbles": true,
-		"pocketdimension": true
+		"swirlymarbles": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/983996053869174834/snailalt.png"
 	}

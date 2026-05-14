@@ -1,4 +1,9 @@
 local command = {}
+
+function rand_from_table(tab)
+  return tab[math.random(#tab)]
+end
+
 function command.run(message, mt)
 local time = sw:getTime()
   print(message.author.name .. " did !pull")
@@ -86,9 +91,9 @@ local time = sw:getTime()
 
   local pulledcards = {}
   if uj.disablecommunity then
-    pulledcards = {ptablenc[uj.equipped][math.random(#ptablenc[uj.equipped])]}
+    pulledcards = {rand_from_table(ptablenc[uj.equipped])}
   else
-    pulledcards = {ptable[uj.equipped][math.random(#ptable[uj.equipped])]}
+    pulledcards = {rand_from_table(ptable[uj.equipped])}
   end
   
   if not uj.conspt then
@@ -98,36 +103,46 @@ local time = sw:getTime()
     if uj.equipped == "fixedmouse" and math.random(6) == 1 then
 	
       if uj.disablecommunity then
-        table.insert(pulledcards, ptablenc[uj.equipped][math.random(#ptablenc[uj.equipped])])
+        table.insert(pulledcards, rand_from_table(ptablenc[uj.equipped]))
       else
-        table.insert(pulledcards, ptable[uj.equipped][math.random(#ptable[uj.equipped])])
+        table.insert(pulledcards, rand_from_table(ptable[uj.equipped]))
       end
       uj.timesdoubleclicked = uj.timesdoubleclicked and uj.timesdoubleclicked + 1 or 1
     end
   else
+    -- Consumables that force a specific card(s):
     if uj.conspt == "sbubby" then
       pulledcards = { "sandwich" }
     elseif uj.conspt:sub(1, 6) == "season" then
+      local season = tonumber(uj.conspt:sub(7)) or 0
       pulledcards = {}
-      table.insert(pulledcards, constable[uj.conspt][math.random(#constable[uj.conspt])])
-      table.insert(pulledcards, constable[uj.conspt][math.random(#constable[uj.conspt])])
-      table.insert(pulledcards, constable[uj.conspt][math.random(#constable[uj.conspt])])
+      for _ = 1, 3 do -- todo: make that customizable!
+        table.insert(pulledcards, rand_from_table(weightedseasontable[season]))
+      end
+    elseif uj.conspt:sub(1, 7) == "rarity_" then
+      local rarity = uj.conspt:sub(8)
+      pulledcards = { rand_from_table(rarcardtable[rarity]) }
+    elseif uj.conspt:sub(1, 5) == "star_" then
+      local star = tonumber(uj.conspt:sub(5))
+      pulledcards = { rand_from_table(starcardtable[star]) }
     else
-      pulledcards = { constable[uj.conspt][math.random(#constable[uj.conspt])] }
+      pulledcards = { rand_from_table(constable[uj.conspt]) }
     end
+
+    -- Consumables that give extra cards:
     if uj.conspt == "quantummouse" then
 	    if uj.disablecommunity then
-        table.insert(pulledcards, constablenc["quantummouse"][math.random(#constablenc["quantummouse"])])
+        table.insert(pulledcards, rand_from_table(constablenc["quantummouse"]))
 	    else
-	      table.insert(pulledcards, constable["quantummouse"][math.random(#constable["quantummouse"])])
+	      table.insert(pulledcards, rand_from_table(constable["quantummouse"]))
 	    end
 	  
       if uj.equipped == "fixedmouse" and math.random(6) == 1 then
-        if uj.disablecommunity then
-			    table.insert(pulledcards, constablenc["quantummouse"][math.random(#constablenc["quantummouse"])])
-		    else
-			    table.insert(pulledcards, constable["quantummouse"][math.random(#constable["quantummouse"])])
-		    end
+	      if uj.disablecommunity then
+          table.insert(pulledcards, rand_from_table(constablenc["quantummouse"]))
+	      else
+	        table.insert(pulledcards, rand_from_table(constable["quantummouse"]))
+	      end
         uj.timesdoubleclicked = uj.timesdoubleclicked and uj.timesdoubleclicked + 1 or 1
       end
     end
@@ -202,7 +217,7 @@ _________________```]] .. "\n" .. footer)
         color = uj.embedc,
         title = title,
         description = msg,
-        image = {url = type(cdb[v].embed) == "table" and cdb[v].embed[math.random(#cdb[v].embed)] or cdb[v].embed},
+        image = {url = type(cdb[v].embed) == "table" and cdb[v].embed[math.random(#cdb[v].embed)] or cdb[v].embed}, -- is this actually used for anything?
         footer = {text = footer}
       }}
     else

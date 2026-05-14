@@ -50,8 +50,7 @@
 	  "smell": "1 Tick Classic Rows",
 	  "season": 6,
 	  "bonuses": {
-		"fieldjournal": true,
-		"pocketdimension": true
+		"fieldjournal": true
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/849055814525648896/draemonalt.png"
 	},
