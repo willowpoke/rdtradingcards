@@ -339,7 +339,7 @@ function command.run(message, mt, overwrite)
       end
     end
 
-    iterateitemdb["pocketdimension"] = {}
+    constable["pocketdimension"] = {}
 
     for i, v in ipairs(cdata.groups) do
       for w, x in ipairs(v.cards) do
