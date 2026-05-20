@@ -549,5 +549,13 @@
       "r"
     ],
     "receive": "chronomia"
+  },
+  {
+    "require": [
+      "luckyr",
+      "luckysr",
+      "luckyur"
+    ],
+    "receive": "luckyc"
   }
 ]

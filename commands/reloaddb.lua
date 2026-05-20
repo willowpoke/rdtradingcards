@@ -364,7 +364,7 @@ function command.run(message, mt, overwrite)
           table.insert(rarcardtable[rarity], x.filename)
           table.insert(starcardtable[rating], x.filename)
           if rating == 5 then -- is this a good idea?
-            table.insert(iterateitemdb["pocketdimension"], x.filename)
+            table.insert(constable["pocketdimension"], x.filename)
           end
         else
           print(formatstring("[ERROR] Card {0} has invalid rarity: {1}", {x.filename, x.type}))

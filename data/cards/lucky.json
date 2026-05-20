@@ -1,19 +1,58 @@
 {
-  "groupname": "lucky",
-  "basechance": 3,
-  "cards": [{
-	"chance": 3,
-	"filename": "luckyr",
-	"name": "Maximo \"Lucky\" Jonronero (Rare)",
-	"type": "Rare",
-	"description": "(Art by Winston Lee)",
-	"smell": "Bubblegum",
-	"season": 11,
-	"spoiler": true,
-	"bonuses": {
-	  "sportsplaceholder": true,
-	  "okamiiscollar": true
+	"groupname": "lucky",
+	"basechance": 3,
+	"cards": [{
+		"chance": 3,
+		"filename": "luckyr",
+		"name": "Maximo \"Lucky\" Jonronero (Rare)",
+		"type": "Rare",
+		"description": "(Art by Winston Lee)",
+		"smell": "Bubblegum",
+		"season": 11,
+		"bonuses": {
+			"sportsplaceholder": true,
+			"okamiiscollar": true
+		},
+		"embed": "https://media.discordapp.net/attachments/1170130183286706246/1170208258003308604/luckyr.png"
 	},
-	"embed": "https://media.discordapp.net/attachments/1170130183286706246/1170208258003308604/luckyr.png"
-  }]
+	{
+		"chance": 2,
+		"filename": "luckysr",
+		"name": "Maximo \"Lucky\" Jonronero (Super Rare)",
+		"type": "Super Rare",
+		"description": "(Art by Peachy)",
+		"smell": "Bubblegum",
+		"season": 11,
+		"bonuses": {
+			"sportsplaceholder": true
+		},
+		"embed": "https://media.discordapp.net/attachments/865407405092503582/1506690967695261746/Lucky_SRVersion1.png"
+	},
+	{
+		"chance": 1,
+		"filename": "luckyur",
+		"name": "Maximo \"Lucky\" Jonronero (Ultra Rare)",
+		"type": "Ultra Rare",
+		"description": "(Art by Peachy)",
+		"smell": "Bubblegum",
+		"season": 11,
+		"bonuses": {
+			"sportsplaceholder": true
+		},
+		"embed": "https://media.discordapp.net/attachments/865407405092503582/1506690853249224877/Lucky_UR.png"
+	},
+	{
+		"chance": 0,
+		"filename": "luckyc",
+		"name": "Maximo \"Lucky\" Jonronero (Collector's)",
+		"type": "Collector's",
+		"description": "Requires the Rare, Super Rare, and Ultra Rare variants of Lucky (Art by Peachy)",
+		"smell": "Bubblegum",
+		"season": 11,
+		"bonuses": {
+			"sportsplaceholder": true
+		},
+		"embed": "https://media.discordapp.net/attachments/1030420309947469904/1410325951287394438/guiguidc.png"
+	}
+]
 }
