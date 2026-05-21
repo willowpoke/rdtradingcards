@@ -55,11 +55,11 @@ function reaction.run(message, interaction, data, response)
     if not wj.labdiscovered then
       interaction:reply(lang.denied_hole)
     else
-      if wj.ws == 1101 then
-        interaction:reply(lang.denied_terminal_1101)
-      else
+      -- if wj.ws == 1101 then
+      --   interaction:reply(lang.denied_terminal_1101)
+      -- else
         interaction:reply(lang.denied_terminal)
-      end
+      -- end
     end
   end
 end

@@ -53,8 +53,8 @@ function command.run(message, mt)
     
 
     -- UPDATE: everything after 801 is inaccessible so here's the actual new season 11 code stuff
-    --<= 1101: an update can be pulled from the terminal
-    --1102: update pulled, SHELL shows up and allows you to trade
+    -- 1101: nothing it's just a reference for s11 end
+    -- there's stuff planned for s12 yes
 
     wj.ws = tonumber(mt[1]) 
     

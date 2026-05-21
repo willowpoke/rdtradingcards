@@ -160,9 +160,9 @@ o-''|\\_____/)
 			elseif string.lower(mt[2]) == "help" or mt[2] == "" then
 				local command_options = { "HELP", "STATS", "UPGRADE", "CREDITS", "SAVEDATA" }
 				if wj.ws >= 701 then command_options[#command_options + 1] = "LOGS" end
-				if wj.ws >= 1102 then command_options[#command_options + 1] = "TRADE" end
-				local prefix = wj.ws >= 1102 and "```" or "`"
-				local join = wj.ws >= 1102 and "\n  " or "\n"
+				if wj.ws >= 1202 then command_options[#command_options + 1] = "TRADE" end
+				local prefix = wj.ws >= 1202 and "```" or "`"
+				local join = wj.ws >= 1202 and "\n  " or "\n"
 				embed["description"] = prefix .. lang.help_message .. join .. table.concat(command_options, join) .. prefix
 				embed["image"] = { url =
 				"https://cdn.discordapp.com/attachments/829197797789532181/838836625391484979/terminal2.gif" }
