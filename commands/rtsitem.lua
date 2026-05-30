@@ -1,8 +1,7 @@
 local command = {}
 function command.run(message, mt)
   print(message.author.name .. " did !rtsitem")
-  local cmember = message.guild:getMember(message.author)
-  if not cmember:hasRole(privatestuff.modroleid) then
+  if isauthoradmin(message) then
     message.channel:send("haha no, nice try")
     return
   end
@@ -17,8 +16,8 @@ function command.run(message, mt)
 
   local uj2 = dpf.loadjson(uj2f, defaultjson)
   
-  local item = 'oldfriend'
-  local itemtype = 'item'
+  local item = 'ratingform'
+  local itemtype = 'cons'
   
   if mt[2] == 'granolabar' then
 	item = 'granolabar'
@@ -41,6 +40,9 @@ function command.run(message, mt)
   elseif mt[2] == 'oldfriend' then
 	item = 'oldfriend'
 	itemtype = 'item'
+  elseif mt[2] == 'ratingform' then
+  item = 'ratingform'
+  itemtype = 'cons'
   end
 
   local numitems = 1

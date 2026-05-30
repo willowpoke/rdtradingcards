@@ -191,6 +191,9 @@ function command.run(message, mt, overwrite)
       ur = "Ultra Rare",
       dc = "Discontinued",
       alt = "Alternate",
+      altr = "Alternate Rare",
+      altsr = "Alternate Super Rare",
+      altur = "Alternate Ultra Rare",
       dcr = "Discontinued Rare",
       dcsr = "Discontinued Super Rare",
       dcur = "Discontinued Ultra Rare",
@@ -198,16 +201,16 @@ function command.run(message, mt, overwrite)
       altalt = "Alternate Alternate",
       pico8 = "PICO-8",
     }
-    _G["rarities_alternate"] = {"alt", "dcalt", "altalt"}
+    _G["rarities_alternate"] = {"alt", "dcalt", "altalt", "altr", "altsr", "altur"}
+    _G["starrating"] = {
+      [1] = {"r", "pico8"},
+      [2] = {"sr"},
+      [3] = {"ur"},
+      [4] = {"alt", "dc"},
+      [5] = {"alt", "dc", "dcalt", "altalt", "altr", "altsr", "altur"}
+    }
     _G["rarities_invert"] = {}
     for k,v in pairs(rarities) do _G["rarities_invert"][v] = k end
-    _G["starrating"] = {
-      [1] = {"r"},
-      [2] = {"sr", "dcr", "pico8"},
-      [3] = {"ur", "dcsr"},
-      [4] = {"dc", "dcur"},
-      [5] = rarities_alternate
-    }
     _G["starrating_invert"] = {}
     for k,v in pairs(starrating) do 
       for _, v2 in ipairs(v) do
@@ -367,7 +370,7 @@ function command.run(message, mt, overwrite)
             table.insert(constable["pocketdimension"], x.filename)
           end
         else
-          print(formatstring("[ERROR] Card {0} has invalid rarity: {1}", {x.filename, x.type}))
+          print("[ERROR] Card "..x.filename.." has invalid rarity: "..x.type)
         end
         table.insert(seasontable[x.season], x.filename)
         for y = 1, (cdata.basemult * v.basechance * x.chance) do

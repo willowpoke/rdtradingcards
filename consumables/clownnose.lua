@@ -13,7 +13,7 @@ function item.run(uj, ujf, message, mt, interaction)
     replying:reply(lang.clownnose_message)
     local randtime = math.random(4, 8)
     uj.lastpull = uj.lastpull - randtime
-    message:reply(formatstring(lang.cooldown_decrease, {randtime}))
+    message:reply(formatstring(lang.cooldown_decrease, {randtime}, lang.plural_s))
     dpf.savejson(ujf, uj)
   else
     replying:reply(lang.clownnose_conspt)

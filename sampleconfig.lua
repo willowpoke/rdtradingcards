@@ -14,6 +14,11 @@ local config = {
 		
 		box = 11.5,				-- c!b
 		box_gloves = 8,			-- c!b with Stained Gloves equipped
+	},
+	emojis = {
+		-- stars used by Rate Your Experience Form
+		star = ":star:", -- filled
+		missingstar = "<:missingstar:1510309604603461762>" -- empty
 	}
 }
 -- You can reload the config at any time using c!reloadconfig.
