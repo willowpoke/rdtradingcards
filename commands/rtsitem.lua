@@ -1,7 +1,7 @@
 local command = {}
 function command.run(message, mt)
   print(message.author.name .. " did !rtsitem")
-  if isauthoradmin(message) then
+  if not isauthoradmin(message) then
     message.channel:send("haha no, nice try")
     return
   end

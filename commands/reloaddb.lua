@@ -207,7 +207,10 @@ function command.run(message, mt, overwrite)
       [2] = {"sr"},
       [3] = {"ur"},
       [4] = {"alt", "dc"},
-      [5] = {"alt", "dc", "dcalt", "altalt", "altr", "altsr", "altur"}
+      [5] = {
+        "alt", "dc", "dcr", "dcsr", "dcur",
+        "dcalt", "altalt", "altr", "altsr", "altur"
+      }
     }
     _G["rarities_invert"] = {}
     for k,v in pairs(rarities) do _G["rarities_invert"][v] = k end
@@ -356,7 +359,7 @@ function command.run(message, mt, overwrite)
           local rarity = rarities_invert[x.type]
           local rating = starrating_invert[rarity]
           --print("Rating of "..rarity..": "..rating)
-          if not rarcardtable[rarity] then
+          if rarity and not rarcardtable[rarity] then
             print("making rarity "..rarity)
             rarcardtable[rarity] = {}
           end
