@@ -105,7 +105,7 @@
 			"filename": "wrenr",
 			"name": "Wren (Rare)",
 			"type": "Rare",
-			"description": "(Art by ???)",
+			"description": "(Art by Winston Lee)",
 			"smell": "Infodumping",
 			"season": 11,
 			"bonuses": {
@@ -119,7 +119,7 @@
 			"filename": "canaryr",
 			"name": "Canary (Rare)",
 			"type": "Rare",
-			"description": "(Art by ???)",
+			"description": "(Art by Winston Lee)",
 			"smell": "Small Talk",
 			"season": 11,
 			"bonuses": {
@@ -162,7 +162,7 @@
 			"name": "Sophia (Rare)",
 			"type": "Rare",
 			"description": "(Art by Kamayana)",
-			"smell": "?",
+			"smell": "Old Furniture",
 			"season": 11,
 			"bonuses": {
 				"okamiiscollar": true,
@@ -176,7 +176,7 @@
 			"name": "Lune (Rare)",
 			"type": "Rare",
 			"description": "(Art by Kamayana)",
-			"smell": "?",
+			"smell": "Pushpins",
 			"season": 11,
 			"bonuses": {
 				"okamiiscollar": true,
@@ -190,7 +190,7 @@
 			"name": "Cranky (Rare)",
 			"type": "Rare",
 			"description": "(Art by CV35W)",
-			"smell": "Polystyrene",
+			"smell": "Protons and Stardust",
 			"season": 11,
 			"bonuses": {
 				"okamiiscollar": true,

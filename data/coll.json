@@ -137,6 +137,22 @@
   },
   {
     "require": [
+      "markr",
+      "marksr",
+      "markur"
+    ],
+    "receive": "markc"
+  },
+  {
+    "require": [
+      "luckyr",
+      "luckysr",
+      "luckyur"
+    ],
+    "receive": "luckyc"
+  },
+  {
+    "require": [
       "ottor",
       "ottosr",
       "ottour"

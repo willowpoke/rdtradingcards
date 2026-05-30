@@ -1,0 +1,83 @@
+{ "groupname": "mark",
+  "basechance": 3,
+  "cards": [{
+	  "chance": 3,
+	  "filename": "markr",
+	  "name": "Mark Booker (Rare)",
+	  "type": "Rare",
+	  "description": "(Art by RentaP)",
+	  "smell": "Literature",
+	  "season": 11,
+	  "bonuses": {
+		"okamiiscollar": true,
+		"oversizedstethoscope": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510306115630530680/markr.png"
+	},
+	{
+	  "chance": 2,
+	  "filename": "marksr",
+	  "name": "Mark Booker (Super Rare)",
+	  "type": "Super Rare",
+	  "description": "(Art by Peachy6206)",
+	  "smell": "Literature",
+	  "season": 11,
+	  "bonuses": {
+		"oversizedstethoscope": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510298960986898522/marksr.png"
+	},
+	{
+	  "chance": 1,
+	  "filename": "markur",
+	  "name": "Mark Booker (Ultra Rare)",
+	  "type": "Ultra Rare",
+	  "description": "(Art by arcane_acid)",
+	  "smell": "Literature",
+	  "season": 11,
+	  "bonuses": {
+		"oversizedstethoscope": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510298960013561997/markur.png"
+	},
+	{
+	  "chance": 0.75,
+	  "filename": "markalt_r",
+	  "name": "Mark Booker (Alternate Rare)",
+	  "type": "Alternate Rare",
+	  "description": "(Art by RentaP)",
+	  "smell": "Apples",
+	  "season": 11,
+	  "bonuses": {
+		"oversizedstethoscope": true,
+		"pocketdimension": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510306937995268136/markalt_r.png"
+	},
+	{
+	  "chance": 0.5,
+	  "filename": "markalt_sr",
+	  "name": "Mark Booker (Alternate Super Rare)",
+	  "type": "Alternate Super Rare",
+	  "description": "(Art by Peachy6206)",
+	  "smell": "Apples",
+	  "season": 11,
+	  "bonuses": {
+		"oversizedstethoscope": true,
+		"pocketdimension": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510299572122161372/markalt_sr.png"
+	},
+	{
+	  "chance": 0,
+	  "filename": "markc",
+	  "name": "Mark Booker (Collector's)",
+	  "type": "Collector's",
+	  "description": "Requires the Rare, Super Rare, Ultra Rare variants of Mark Booker (Art by trini)",
+	  "smell": "Literature",
+	  "season": 11,
+	  "bonuses": {},
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510298960634450182/markc.png"
+	}
+  ]
+}
