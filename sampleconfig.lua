@@ -15,6 +15,10 @@ local config = {
 		box = 11.5,				-- c!b
 		box_gloves = 8,			-- c!b with Stained Gloves equipped
 	},
+	shop = {
+		restock_delay = 26/24,	-- in days
+
+	},
 	emojis = {
 		-- stars used by Rate Your Experience Form
 		star = ":star:", -- filled

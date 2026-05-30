@@ -204,7 +204,7 @@ function command.run(message, mt, overwrite)
     _G["rarities_alternate"] = {"alt", "dcalt", "altalt", "altr", "altsr", "altur"}
     _G["starrating"] = {
       [1] = {"r", "pico8"},
-      [2] = {"sr"},
+      [2] = {"sr", "pico8"},
       [3] = {"ur"},
       [4] = {"alt", "dc"},
       [5] = {
@@ -220,6 +220,22 @@ function command.run(message, mt, overwrite)
         _G["starrating_invert"][v2] = k
       end
     end
+    _G["rarity_sell_prices"] = {
+      r = 1,
+      sr = 2,
+      ur = 4,
+      dc = {4, 6},
+      alt = {4, 6},
+      altr = {5, 8},
+      altsr = {8, 10},
+      altur = {13, 17},
+      dcr = {5, 8},
+      dcsr = {8, 10},
+      dcur = {13, 17},
+      dcalt = {8, 10},
+      altalt = {8, 10},
+      pico8 = 2,
+    }
     
     _G['amtable'] = {
       pyrowmid = {"strange machine", "machine", "panda"},
@@ -321,7 +337,7 @@ function command.run(message, mt, overwrite)
       for i, v in ipairs(cdata.groups) do
         for w, x in ipairs(v.cards) do
           local cmult = 1
-          if x.bonuses[k] then
+          if x.bonuses and x.bonuses[k] then
             cmult = 10 -- might tweak this??
             for y=1, (cdata.basemult * v.basechance * x.chance) do
               table.insert(constable[k],x.filename)
@@ -1095,9 +1111,9 @@ function command.run(message, mt, overwrite)
     end
     
     _G['checkforreload'] = function(days)
-      local cooldown = 26/24
-      local sj = dpf.loadjson("savedata/shop.json", defaultshopsave)
+      local cooldown = config.shop.restock_delay
       print(days .. "days")
+      local sj = dpf.loadjson("savedata/shop.json", defaultshopsave)
       if days >= sj.lastrefresh + cooldown then
         stockshop()
         sj = dpf.loadjson("savedata/shop.json", defaultshopsave)
@@ -1131,24 +1147,11 @@ function command.run(message, mt, overwrite)
         end
         local price = 8
         local rarity = cdb[nc].type
-        if rarity == "Rare" then
-          price = 1
-        elseif rarity == "Super Rare" or rarity == "PICO-8" then
-          price = 2
-        elseif rarity == "Ultra Rare" then
-          price = 4
-        elseif rarity == "Discontinued" or rarity == "Alternate" then
-          price = math.random(4, 6)
-        elseif rarity == "Discontinued Rare" then
-          price = math.random(5, 8)
-        elseif rarity == "Discontinued Alternate" or rarity == "Discontinued Super Rare" then
-          price = math.random(8, 10)
-        elseif rarity == "Discontinued Ultra Rare" then
-          price = math.random(13, 17)
-        end
-
-        if cdb[nc].season == 11 then
-          price = price + 1
+        local expected_price = rarity_sell_prices[rarities_invert[rarity]]
+        if type(expected_price) == "number" then -- Fixed rarity price
+          price = expected_price
+        elseif type(expected_price) == "table" and #expected_price == 2 then -- Variable rarity price
+          price = math.random(expected_price[1], expected_price[2])
         end
 
         local stock = cdb[nc].chance * 4 + math.random(2, 5)

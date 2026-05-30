@@ -304,7 +304,7 @@
     "name": "Rate Your Experience Form",
     "description": "Gives you a star rating, which will determine the rarity of the next card pulled.\nYou can only use one pull-altering consumable at a time.",
     "embed": "https://cdn.discordapp.com/attachments/829197797789532181/829203129881985094/nothing.png",
-    "baseprice": 5,
+    "baseprice": 4,
     "basestock": 8,
     "chance": 10
   },
