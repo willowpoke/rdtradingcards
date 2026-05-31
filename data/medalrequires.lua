@@ -82,7 +82,10 @@ return {
           uj.storage['soundur'] and
           uj.storage['decor'] and
           uj.storage['decosr'] and
-          uj.storage['decour']
+          uj.storage['decour'] and
+          uj.storage['windowsr'] and
+          uj.storage['windowssr'] and
+          uj.storage['windowsur']
     end
   },
   {
@@ -227,6 +230,16 @@ return {
     receive = "s10maestro",
     require = function(uj)
       for i, v in ipairs(seasontable[10]) do
+        if not uj.storage[v] then return false end
+      end
+
+      return true
+    end
+  },
+  {
+    receive = "s11maestro",
+    require = function(uj)
+      for i, v in ipairs(seasontable[11]) do
         if not uj.storage[v] then return false end
       end
 

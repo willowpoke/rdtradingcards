@@ -55,7 +55,7 @@
 	"ddd_unused": "... was not used. Please send a message with c!use .../(CARD) to use this item.",
 	"ddd_no_item": "Sorry, but I could not find the {1} card in the database. Make sure that you spelled it right!",
 	"ddd_dont_have": "Sorry, but you don't have the **{1}** card in your storage.",
-	"ratingform_message": "You have received... a **{1}-star rating**! \n# {2}",
+	"ratingform_message": "You gave the form to a random passerby. They returned it with a... **{1}-star rating**! \n# {2}",
 	"ratungform_conspt": "You've already used a pull-altering consumable! You decide against using the **Rate Your Experience Form** for now.",
 	
 	"cooldown_decrease": "Also, your pull cooldown was decreased by {1} hour{1s}!",
