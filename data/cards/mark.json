@@ -69,6 +69,20 @@
 	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510299572122161372/markalt_sr.png"
 	},
 	{
+	  "chance": 0.25,
+	  "filename": "markalt_ur",
+	  "name": "Mark Booker (Alternate Ultra Rare)",
+	  "type": "Alternate Ultra Rare",
+	  "description": "(Art by Cehroaza)",
+	  "smell": "Apples",
+	  "season": 11,
+	  "bonuses": {
+		"oversizedstethoscope": true,
+		"pocketdimension": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510758912066850926/image.png"
+	},
+	{
 	  "chance": 0,
 	  "filename": "markc",
 	  "name": "Mark Booker (Collector's)",
