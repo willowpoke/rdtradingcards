@@ -303,7 +303,7 @@
   "ratingform" : {
     "name": "Rate Your Experience Form",
     "description": "Gives you a star rating, which will determine the rarity of the next card pulled.\nYou can only use one pull-altering consumable at a time.",
-    "embed": "https://cdn.discordapp.com/attachments/829197797789532181/829203129881985094/nothing.png",
+    "embed": "https://media.discordapp.net/attachments/829197797789532181/1510597806291681442/rateyourexperienceform.png",
     "baseprice": 4,
     "basestock": 8,
     "chance": 10
@@ -377,7 +377,7 @@
   "essenceofratingform" : {
 	  "name": "Essence of Rate Your Experience Form",
 	  "description": "Cannot be used. Marks your participation in an event.",
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/1106683152828739584/essenceofoldfriend.png",
+	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1510601967846686740/essenceofrateyourexperienceform.png",
 	  "baseprice": 9999,
 	  "basestock": 9999,
 	  "chance": 0,

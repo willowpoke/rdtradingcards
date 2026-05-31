@@ -26,7 +26,7 @@
   },
   "editorenthusiast": {
     "name": "Editor Enthusiast",
-    "description": "Collect all non-DC rarites of the Sound, VFX, Rows, and Rooms cards!",
+    "description": "Collect all non-DC rarites of the Sound, VFX, Rows, Rooms, Decos, & Windows cards!",
     "embed": "https://cdn.discordapp.com/attachments/829197797789532181/829203387882668032/editorenthusiast.png"
   },
   "mememaestro": {
@@ -87,12 +87,17 @@
   "s9maestro": {
     "name": "Season 9 Maestro",
     "description": "Collect every single Season 9 card!",
-    "embed": "https://cdn.discordapp.com/attachments/829197797789532181/1015290684229562449/season9maestro.png"
+    "embed": "https://media.discordapp.net/attachments/829197797789532181/1510588364653465691/season9maestro.png"
   },
   "s10maestro": {
     "name": "Season 10 Maestro",
     "description": "Collect every single Season 10 card!",
-    "embed": "https://cdn.discordapp.com/attachments/1170130183286706246/1170135735408529488/season10maestro.png"
+    "embed": "https://media.discordapp.net/attachments/829197797789532181/1510588365391790221/season10maestro.png"
+  },
+  "s11maestro": {
+    "name": "Season 11 Maestro",
+    "description": "Collect every single Season 11 card!",
+    "embed": "https://media.discordapp.net/attachments/829197797789532181/1510588365911887963/season11maestro.png"
   },
   "pyramidal": {
     "name": "Pyramidal",
