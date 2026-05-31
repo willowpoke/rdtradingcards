@@ -1,7 +1,6 @@
 {
 	"error_no_item": "An error has occured. Please make sure that you still have the item!",
-	"denied_message_1": "You decide to not use the **",
-	"denied_message_2": "**.",
+	"denied_message": "You decide to not use the **{1}**.",
 	
 	"caffeinatedsoda_message": "Your cooldowns have been removed! For now...",
 	"decaf_message": "You set down the **Decaf** cup near the set of a medieval fantasy TV show being filmed. This will surely attract the attention of coffeeshop staff and regulars.",

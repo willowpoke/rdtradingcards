@@ -35,7 +35,7 @@ function reaction.run(message, interaction, data, response)
 
   if response == "no" then
     print('user has denied')
-    interaction:reply(formatstring(lang.denied_message, consdb[data.crequest].name))
+    interaction:reply(formatstring(lang.denied_message, {consdb[data.crequest].name}))
   end
 end
 return reaction
