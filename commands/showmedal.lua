@@ -33,7 +33,7 @@ function command.run(message, mt)
   message.channel:send{embed = {
     color = uj.embedc,
     title = lang.showing_medal,
-    description = formatstring(lang.show_medal_1, {medaldb[curfilename].name, curfilename, medaldb[curfilename].description}),
+    description = formatstring(lang.show_medal, {medaldb[curfilename].name, curfilename, medaldb[curfilename].description}),
     image = {
       url = medaldb[curfilename].embed
     }
