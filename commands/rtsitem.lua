@@ -1,12 +1,13 @@
 local command = {}
 function command.perm_check(message)
   local cmember = message.guild:getMember(message.author)
+  print("author is "..message.author.name.." and target role is "..config.rtsitemrole)
   if cmember:hasRole(config.rtsitemrole) then return true end
   return false
 end
 function command.run(message, mt)
   print(message.author.name .. " did !rtsitem")
-  if not isauthoradmin(message) or command.perm_check(message) then
+  if not isauthoradmin(message) and not command.perm_check(message) then
     message.channel:send("haha no, nice try")
     return
   end
