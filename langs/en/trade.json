@@ -16,7 +16,7 @@
 	"dont_have_user1": "Sorry, but you don't have the **{1}** card in your inventory.",
 	"dont_have_user2": "Sorry, but {1} doesn't have the **{2}** card in {3} inventory.",
 	
-	"confirm_message_1": "<@{1}>, <@{2}> wants to trade {3} **{4}** for your **{5}**. Click the Yes button to accept and No to deny.",
+	"confirm_message": "<@{1}>, <@{2}> wants to trade {3} **{4}** for your **{5}**. Click the Yes button to accept and No to deny.",
 	
 	"reaction_no_card": "An error has occured. Please make sure that both parties still have the cards in their inventories!",
 	"reaction_trade_done": "The trade between <@{1}> and <@{2}> has completed.",

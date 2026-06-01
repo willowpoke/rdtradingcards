@@ -23,7 +23,8 @@ local config = {
 		-- stars used by Rate Your Experience Form
 		star = ":star:", -- filled
 		missingstar = "<:missingstar:1510309604603461762>" -- empty
-	}
+	},
+	rtsitemrole = "1041882546545369199"
 }
 -- You can reload the config at any time using c!reloadconfig.
 return config
