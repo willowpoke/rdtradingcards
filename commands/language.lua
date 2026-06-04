@@ -8,7 +8,7 @@ function command.run(message, mt)
     uj.lang = "en"
   end
   
-  local request = string.lower(mt[1])
+  local request = string.lower(mt[1] or "")
   local change_successful = false
   if request == "english" or request == "en" or request == "eng" or request == "영어" or request == "anglais" then
     change_successful = true

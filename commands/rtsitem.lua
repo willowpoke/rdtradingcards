@@ -16,7 +16,7 @@ function command.run(message, mt)
 
   local uj2f = usernametojson(mt[1])
   if not uj2f then
-    message.channel:send("Sorry, but I could not find a user named " .. mt[1] .. " in the database. Make sure that you have spelled it right, and that they have at least pulled a card to register!")
+    message.channel:send("Sorry, but I could not find a user named " .. (mt[1] or "[NO NAME]") .. " in the database. Make sure that you have spelled it right, and that they have at least pulled a card to register!")
     return
   end
 

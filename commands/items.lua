@@ -5,7 +5,7 @@ function command.run(message, mt)
   local lang = dpf.loadjson("langs/" .. uj.lang .. "/items.json", "")
 
   local pagenumber = 1
-  if tonumber(mt[1]) then
+  if mt[1] and tonumber(mt[1]) then
     pagenumber = math.floor(mt[1])
   end
   pagenumber = math.max(1, pagenumber)
