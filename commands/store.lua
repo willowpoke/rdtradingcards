@@ -5,7 +5,7 @@ function command.run(message, mt)
   local uj = dpf.loadjson(ujf, defaultjson)
   local lang = dpf.loadjson("langs/" .. uj.lang .. "/store.json", "")
   if not (#mt == 1 or #mt == 2) then
-    message.channel:send(lang.no_arguments)
+    message.channel:send(formatstring(lang.no_arguments, {prefix}))
     return
   end
 

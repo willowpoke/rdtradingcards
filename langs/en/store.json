@@ -1,7 +1,7 @@
 {
 	"needs_plural_s": true,
 	
-	"no_arguments": "Sorry, but the c!store command expects 1 or 2 arguments. Please see c!help for more details.",
+	"no_arguments": "Sorry, but the c!store command expects 1 or 2 arguments.\nSyntax: `{1}store [card]/<amount>` \n-# Please see c!help for more details.",
 	
 	"no_item_nopeeking": "Sorry, but I either could not find the {1} card in the database, or you do not have it. Make sure that you spelled it right!",
 	"no_item": "Sorry, but I could not find the {1} card in the database. Make sure that you spelled it right!",

@@ -14,6 +14,8 @@ local config = {
 		
 		box = 11.5,				-- c!b
 		box_gloves = 8,			-- c!b with Stained Gloves equipped
+
+		equip = 6,				-- c!equip
 	},
 	shop = {
 		restock_delay = 26/24,	-- in days
