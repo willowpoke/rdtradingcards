@@ -840,8 +840,8 @@ function command.run(message, mt, overwrite)
               b = string.trim(b)
               nmt[a]=b
             end
-            if mt[#mt] == "" then
-              mt[#mt] = nil
+            if nmt[#mt] == "" then
+              nmt[#mt] = nil
             end
           elseif v.expectedargs == 1 then
             nmt = {string.trim(string.sub(messagecontent, #v.trigger+1))}
