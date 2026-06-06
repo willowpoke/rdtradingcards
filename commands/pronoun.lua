@@ -78,7 +78,7 @@ function command.run(message, mt)
     uj.pronouns["theirs"] = lang.vee_theirs
     uj.pronouns["theirself"] = lang.vee_theirself
     message.channel:send(lang.vee_changed)
-  elseif mt[1] == "" then
+  elseif not mt[1] or mt[1] == "" then
     message.channel:send(lang.no_value)
   else
     message.channel:send(formatstring(lang.no_database, {mt[1]}))

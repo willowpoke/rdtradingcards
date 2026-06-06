@@ -44,6 +44,8 @@ local time = sw:getTime()
   local show_tutorial_message = true
   if uj.has_seen_tutorials.pray then
     show_tutorial_message = false
+  else
+    uj.has_seen_tutorials["pray"] = true
   end
   
   dpf.savejson("savedata/" .. message.author.id .. ".json",uj)

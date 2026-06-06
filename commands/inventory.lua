@@ -18,8 +18,10 @@ function command.run(message, mt)
   local pagenumber = 1
 
   local args = {}
-  for substring in mt[1]:gmatch("%S+") do
-    table.insert(args, substring)
+  if mt[1] then
+    for substring in mt[1]:gmatch("%S+") do
+      table.insert(args, substring)
+    end
   end
 
   for index, value in ipairs(args) do

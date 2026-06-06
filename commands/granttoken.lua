@@ -5,8 +5,8 @@ function command.run(message, mt)
     return
   end
 
-  if not usernametojson(mt[1]) then
-    message.channel:send("Sorry, but I could not find a user named " .. mt[1] .. " in the database. Make sure that you have spelled it right, and that they have at least pulled a card to register!")
+  if not mt[1] or not usernametojson(mt[1]) then
+    message.channel:send("Sorry, but I could not find a user named " .. (mt[1] or "[NO NAME]") .. " in the database. Make sure that you have spelled it right, and that they have at least pulled a card to register!")
     return
   end
 

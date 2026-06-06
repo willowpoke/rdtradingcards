@@ -141,7 +141,7 @@ o-''|\\_____/)
 					```]]
 			elseif string.lower(mt[2]) == "savedata" then
 				local data = "savedata/" .. uj.id .. ".json"
-				if not (mt[3] == "") then
+				if mt[3] and not (mt[3] == "") then
 					data = usernametojson(mt[3])
 				end
 				if not data then

@@ -5,7 +5,7 @@
 	"time_plural_s": "s",
 	"time_and": " and ",
 	"time_minute": " minute",
-	"wait_message_1": "Please wait {1} before changing your equipped item.",
+	"wait_message": "Please wait {1} before changing your equipped item.",
 	
 	"nopeeking": "Sorry, but I either could not find the {1} item in the database, or you do not have it. Make sure that you spelled it right!",
 	

@@ -1,12 +1,13 @@
 local command = {}
 function command.perm_check(message)
   local cmember = message.guild:getMember(message.author)
+  print("author is "..message.author.name.." and target role is "..config.rtsitemrole)
   if cmember:hasRole(config.rtsitemrole) then return true end
   return false
 end
 function command.run(message, mt)
   print(message.author.name .. " did !rtsitem")
-  if not isauthoradmin(message) or command.perm_check(message) then
+  if not isauthoradmin(message) and not command.perm_check(message) then
     message.channel:send("haha no, nice try")
     return
   end
@@ -15,7 +16,7 @@ function command.run(message, mt)
 
   local uj2f = usernametojson(mt[1])
   if not uj2f then
-    message.channel:send("Sorry, but I could not find a user named " .. mt[1] .. " in the database. Make sure that you have spelled it right, and that they have at least pulled a card to register!")
+    message.channel:send("Sorry, but I could not find a user named " .. (mt[1] or "[NO NAME]") .. " in the database. Make sure that you have spelled it right, and that they have at least pulled a card to register!")
     return
   end
 
