@@ -596,7 +596,7 @@
       {
         "chance": 2,
         "filename": "remebername",
-        "name": "I can't even remeber my own name",
+        "name": "I Can't Even Remember My Own Name",
         "type": "Super Rare",
         "description": "(Level by Daming)",
         "smell": "Dementia",
@@ -610,7 +610,7 @@
       {
         "chance": 1,
         "filename": "ereality",
-        "name": "endless.reaility",
+        "name": "endless.reality",
         "type": "Ultra Rare",
         "description": "(Level by Rikri)",
         "smell": "Realities",
@@ -733,7 +733,7 @@
       {
         "chance": 2,
         "filename": "nulctrl",
-        "name": "NULLCTRL",
+        "name": "NULCTRL",
         "type": "Super Rare",
         "description": "(Level by YeetYote, kernby, Team P.A.L.)",
         "smell": "Clubs",
