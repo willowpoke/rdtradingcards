@@ -214,12 +214,12 @@ function command.run(message, mt, overwrite)
     }
     _G["rarities_invert"] = {}
     for k,v in pairs(rarities) do _G["rarities_invert"][v] = k end
-    _G["starrating_invert"] = {}
-    for k,v in pairs(starrating) do 
-      for _, v2 in ipairs(v) do
-        _G["starrating_invert"][v2] = k
-      end
-    end
+--  _G["starrating_invert"] = {}
+--  for k,v in pairs(starrating) do 
+--    for _, v2 in ipairs(v) do
+--      _G["starrating_invert"][v2] = k
+--    end
+--  end
     _G["rarity_sell_prices"] = {
       r = 1,
       sr = 2,
@@ -321,7 +321,9 @@ function command.run(message, mt, overwrite)
     _G['ptablenc'] = {}
     _G['constablenc'] = {}
     _G['rarcardtable'] = {}
+    _G['rarcardtablenc'] = {}
     _G['starcardtable'] = {}
+    _G['starcardtablenc'] = {}
     _G['weightedseasontable'] = {}
     local iterateitemdb = itemdb
     iterateitemdb["aboveur"] = {}
@@ -352,9 +354,68 @@ function command.run(message, mt, overwrite)
                 table.insert(ptablenc[k],x.filename)
             end
           end
-          if k == "quantummouse" and (x.type == "Rare" or x.type == "Super Rare" or x.type == "Ultra Rare") then
+          if k == "quantummouse" and (x.type == "Rare" or x.type == "PICO-8" or x.type == "Super Rare" or x.type == "Ultra Rare") then
             for y = 1, (cdata.basemult * v.basechance * x.chance) do
               table.insert(constable[k],x.filename)
+              if x.season <= 8 then
+                  table.insert(constablenc[k],x.filename)
+              end
+            end
+          end
+        end
+      end
+    end
+
+    for i, v in ipairs(cdata.groups) do
+      for w, x in ipairs(v.cards) do
+        cdb[x.filename] = x
+        cdb[x.filename]["basechance"] = v.basechance
+        if not seasontable[x.season] then 
+          print("making season "..x.season)
+          seasontable[x.season] = {}
+          weightedseasontable[x.season] = {}
+        end
+        if rarities_invert[x.type] then
+          local rarity = rarities_invert[x.type]
+          --local rating = starrating_invert[rarity]
+          --print("Rating of "..rarity..": "..rating)
+          if rarity and not rarcardtable[rarity] then
+            print("making rarity "..rarity)
+            rarcardtable[rarity] = {}
+            rarcardtablenc[rarity] = {}
+          end
+          --if not starcardtable[rating] then 
+          --  print("making rating "..rating)
+          --  starcardtable[rating] = {}
+          --end
+          table.insert(rarcardtable[rarity], x.filename)
+          if x.season <= 8 then
+            table.insert(rarcardtablenc[rarity], x.filename)
+          end
+          --table.insert(starcardtable[rating], x.filename)
+          --if rating == 5 then -- is this a good idea?
+          --  table.insert(constable["pocketdimension"], x.filename)
+          --end
+        else
+          print("[ERROR] Card "..x.filename.." has invalid rarity: "..x.type)
+        end
+        table.insert(seasontable[x.season], x.filename)
+        for y = 1, (cdata.basemult * v.basechance * x.chance) do
+          table.insert(weightedseasontable[x.season], x.filename)
+        end
+      end
+    end
+
+    for i, v in pairs(starrating) do
+      print("making rating "..i)
+      starcardtable[i] = {}
+      starcardtablenc[i] = {}
+      for i2, v2 in pairs(v) do
+        for _, v3 in ipairs(rarcardtable[v2]) do
+          for y = 1, (cdata.basemult * cdb[v3].basechance * cdb[v3].chance) do
+            table.insert (starcardtable[i], v3)
+            if cdb[v3].season <= 8 then
+              table.insert (starcardtablenc[i], v3)
             end
           end
         end
@@ -362,38 +423,17 @@ function command.run(message, mt, overwrite)
     end
 
     constable["pocketdimension"] = {}
+    constablenc["pocketdimension"] = {}
 
-    for i, v in ipairs(cdata.groups) do
-      for w, x in ipairs(v.cards) do
-        cdb[x.filename] = x
-        if not seasontable[x.season] then 
-          print("making season"..x.season)
-          seasontable[x.season] = {}
-          weightedseasontable[x.season] = {}
-        end
-        if rarities_invert[x.type] then
-          local rarity = rarities_invert[x.type]
-          local rating = starrating_invert[rarity]
-          --print("Rating of "..rarity..": "..rating)
-          if rarity and not rarcardtable[rarity] then
-            print("making rarity "..rarity)
-            rarcardtable[rarity] = {}
+    for i,v in pairs(rarcardtable) do
+      if (i:find("alt")) then
+        for _, v2 in ipairs(v) do
+          for y = 1, (cdata.basemult * cdb[v2].basechance * cdb[v2].chance) do
+            table.insert (constable["pocketdimension"], v2)
+            if cdb[v2].season <= 8 then
+              table.insert (constablenc["pocketdimension"], v2)
+            end
           end
-          if not starcardtable[rating] then 
-            print("making rating "..rating)
-            starcardtable[rating] = {}
-          end
-          table.insert(rarcardtable[rarity], x.filename)
-          table.insert(starcardtable[rating], x.filename)
-          if rating == 5 then -- is this a good idea?
-            table.insert(constable["pocketdimension"], x.filename)
-          end
-        else
-          print("[ERROR] Card "..x.filename.." has invalid rarity: "..x.type)
-        end
-        table.insert(seasontable[x.season], x.filename)
-        for y = 1, (cdata.basemult * v.basechance * x.chance) do
-          table.insert(weightedseasontable[x.season], x.filename)
         end
       end
     end
