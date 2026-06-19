@@ -58,11 +58,11 @@ function command.run(message, mt)
   else
     print("spiderrrrrrr")
     message.channel:send{
-      content = formatstring(lang.show_card, {card_data.name, curfilename}),
+      content = formatstring(lang.show_card, {card_data.name, curfilename, ""}),
       file = "card_images/SPOILER_" .. curfilename .. ".png"
     }
     if card_data.description then
-      message.channel:send(lang.embeddescription .. "\n> " .. card_data.description)
+      message.channel:send(lang.embeddescription .. "\n> " .. card_data.description .. "\n-# Season " .. card_data.season)
     end
   end
 end

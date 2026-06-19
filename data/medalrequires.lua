@@ -83,9 +83,9 @@ return {
           uj.storage['decor'] and
           uj.storage['decosr'] and
           uj.storage['decour'] and
+          uj.storage['windowr'] and
           uj.storage['windowsr'] and
-          uj.storage['windowssr'] and
-          uj.storage['windowsur']
+          uj.storage['windowur']
     end
   },
   {

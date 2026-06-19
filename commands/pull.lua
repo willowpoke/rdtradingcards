@@ -121,13 +121,25 @@ local time = sw:getTime()
       end
     elseif uj.conspt:sub(1, 7) == "rarity_" then
       local rarity = uj.conspt:sub(8)
-      pulledcards = { rand_from_table(rarcardtable[rarity]) }
+      if uj.disablecommunity then
+        pulledcards = { rand_from_table(rarcardtablenc[rarity]) }
+      else
+        pulledcards = { rand_from_table(rarcardtable[rarity]) }
+      end
     elseif uj.conspt:sub(1, 5) == "star_" then
       local star = tonumber(uj.conspt:sub(6))
       print("looking for a star of rating "..star)
-      pulledcards = { rand_from_table(starcardtable[star]) }
+      if uj.disablecommunity then
+        pulledcards = { rand_from_table(starcardtablenc[star]) }
+      else
+        pulledcards = { rand_from_table(starcardtable[star]) }
+      end
     else
-      pulledcards = { rand_from_table(constable[uj.conspt]) }
+      if uj.disablecommunity then
+        pulledcards = { rand_from_table(constablenc[uj.conspt]) }
+      else
+        pulledcards = { rand_from_table(constable[uj.conspt]) }
+      end
     end
 
     -- Consumables that give extra cards:
