@@ -213,7 +213,7 @@
 	  "bonuses": {
 		"hardcandy": true
 	  },
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/829201469806608444/distantduetnight.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865414608256499762/1526652068788437022/distantduetnight.png"
 	},
 	{
 	  "chance": 1,
@@ -227,7 +227,7 @@
 		"hardcandy": true,
 		"deluxebirdseed": true
 	  },
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/829202794279075850/steinwayreprise.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865414608256499762/1526648523095933078/steinwayreprise.png"
 	},
 	{
 	  "chance": 1,
@@ -267,7 +267,7 @@
 		"cafemixtape": true,
 		"rustysword": true
 	  },
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/839142546219335690/unreachable.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865414608256499762/1511824132533256343/unreachable.png"
 	},
 	{
 	  "chance": 1,
@@ -281,7 +281,7 @@
 		"valentinesdaycard": true,
 		"deluxebirdseed": true
 	  },
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/839142847134433331/lounge.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865414608256499762/1511824133053219088/lounge.png"
 	},
 	{
 	  "chance": 1,
@@ -409,7 +409,7 @@
 		"lostnametag": true,
 		"charcoalpencil": true
 	  },
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/829201878784671775/invisible.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865414608256499762/1526650800418455692/invis.png"
 	},
 	{
 	  "chance": 2,
@@ -492,7 +492,7 @@
 		"lostnametag": true,
 		"charcoalpencil": true
 	  },
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/876499352481316904/invisnight.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865414608256499762/1526650801362042930/invisnight.png"
 	},
 	{
 	  "chance": 1,
@@ -930,7 +930,7 @@
 	  "description": "(Minigame by tak)",
 	  "smell": "Hesitation",
 	  "season": 11,
-	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526635464579350568/tempres.png"
+	  "embed": "https://cdn.discordapp.net/attachments/865414608256499762/1526635464579350568/tempres.png"
 	},
 		{
 	  "chance": 1,
@@ -940,7 +940,7 @@
 	  "description": "(Minigame by 7th Beat Games)",
 	  "smell": "Polyrhythms",
 	  "season": 11,
-	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526634864378642492/weightlifter.png"
+	  "embed": "https://cdn.discordapp.net/attachments/865414608256499762/1526634864378642492/weightlifter.png"
 	},
 		{
 	  "chance": 1,
@@ -954,7 +954,7 @@
 		"hardcandy": true,
 		"deluxebirdseed": true
 	  },
-	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526643957100974090/corazones.png"
+	  "embed": "https://cdn.discordapp.net/attachments/865414608256499762/1526643957100974090/corazones.png"
 	}
   ]
 }
