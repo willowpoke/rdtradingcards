@@ -13,7 +13,7 @@
 		"okamiiscollar": true,
 		"deluxebirdseed": true
 	  },
-	  "embed": "https://media.discordapp.com/attachments/865407405092503582/1527109225803813017/heartchickr.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865407405092503582/1527109225803813017/heartchickr.png"
 	},
 	{
 	  "chance": 2,
@@ -80,7 +80,7 @@
 		"deluxebirdseed": true,
 		"oldfiles": true
 	  },
-	  "embed": "https://media.discordapp.com/attachments/865407405092503582/1527109225321336882/heartchickdc.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865407405092503582/1527109225321336882/heartchickdc.png"
 	},
 			{
 	  "chance": 0.5,
@@ -96,7 +96,7 @@
 		"aboveur": true,
         "oldfiles": true
 	  },
-	  "embed": "https://media.discordapp.com/attachments/865407405092503582/1527111984628371486/heartchickdc_alt.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865407405092503582/1527111984628371486/heartchickdc_alt.png"
 	}
   ]
 }
