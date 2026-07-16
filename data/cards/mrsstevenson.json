@@ -55,6 +55,20 @@
 	  },
 	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/839161328199270430/mrsstevensondc.png"
 	},
+		{
+	  "chance": 1,
+	  "filename": "mrsstevensonalt",
+	  "name": "Mrs. Stevenson (Alternate)",
+	  "type": "Alternate",
+	  "description": "(Art by Winston Lee)",
+	  "smell": "Ancianas",
+	  "season": 11,
+	  "bonuses": {
+		"hardcandy": true,
+		"pocketdimension": true
+	  },
+	  "embed": "https://cdn.discordapp.com/attachments/865407405092503582/1527108439178743878/mrsstevensonalt.png"
+	},
 	{
 	  "chance": 0,
 	  "filename": "mrsstevensonc",
