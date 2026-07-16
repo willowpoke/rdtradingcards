@@ -930,7 +930,7 @@
 	  "description": "(Minigame by tak)",
 	  "smell": "Hesitation",
 	  "season": 11,
-	  "embed": "https://cdn.discordapp.net/attachments/865414608256499762/1526635464579350568/tempres.png"
+	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526635464579350568/tempres.png"
 	},
 		{
 	  "chance": 1,
@@ -940,7 +940,7 @@
 	  "description": "(Minigame by 7th Beat Games)",
 	  "smell": "Polyrhythms",
 	  "season": 11,
-	  "embed": "https://cdn.discordapp.net/attachments/865414608256499762/1526634864378642492/weightlifter.png"
+	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526634864378642492/weightlifter.png"
 	},
 		{
 	  "chance": 1,
@@ -954,7 +954,7 @@
 		"hardcandy": true,
 		"deluxebirdseed": true
 	  },
-	  "embed": "https://cdn.discordapp.net/attachments/865414608256499762/1526643957100974090/corazones.png"
+	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526643957100974090/corazones.png"
 	}
   ]
 }
