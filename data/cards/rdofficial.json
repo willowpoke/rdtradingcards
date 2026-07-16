@@ -921,6 +921,40 @@
 		"collabplaceholder": true
 	  },
 	  "embed": "https://media.discordapp.net/attachments/829197797789532181/1501319096019718225/publico_cautivo.png"
+	},
+		{
+	  "chance": 2,
+	  "filename": "tempres",
+	  "name": "TEMPRES",
+	  "type": "Super Rare",
+	  "description": "(Minigame by tak)",
+	  "smell": "Hesitation",
+	  "season": 11,
+	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526635464579350568/tempres.png"
+	},
+		{
+	  "chance": 1,
+	  "filename": "weightlifter",
+	  "name": "Rhythm Weightlifter",
+	  "type": "Ultra Rare",
+	  "description": "(Minigame by 7th Beat Games)",
+	  "smell": "Polyrhythms",
+	  "season": 11,
+	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526634864378642492/weightlifter.png"
+	},
+		{
+	  "chance": 1,
+	  "filename": "corazones",
+	  "name": "Corazones Viejos",
+	  "type": "Ultra Rare",
+	  "description": "(Level by 7th Beat Games)",
+	  "smell": "Chair Dancing",
+	  "season": 11,
+	  "bonuses": {
+		"hardcandy": true,
+		"deluxebirdseed": true
+	  },
+	  "embed": "https://media.discordapp.net/attachments/865414608256499762/1526643957100974090/corazones.png"
 	}
   ]
 }
