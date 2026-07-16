@@ -13,7 +13,7 @@
 		"okamiiscollar": true,
 		"deluxebirdseed": true
 	  },
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/832647184163143751/heartchickr.png"
+	  "embed": "https://media.discordapp.com/attachments/865407405092503582/1527109225803813017/heartchickr.png"
 	},
 	{
 	  "chance": 2,
@@ -63,9 +63,40 @@
 	  "smell": "Scratchless Eggshells",
 	  "season": 5,
 	  "bonuses": {
-		"deluxebirdseed": true
+		"deluxebirdseed": true,
+		"pocketdimension": true
 	  },
-	  "embed": "https://cdn.discordapp.com/attachments/829197797789532181/839199088058433566/heartchickalt.png"
+	  "embed": "https://cdn.discordapp.com/attachments/865407405092503582/1527111984280113293/heartchickalt.png"
+	},
+		{
+	  "chance": 1,
+	  "filename": "heartchickdc",
+	  "name": "Heart Chick (Discontinued)",
+	  "type": "Discontinued",
+	  "description": "(Art by Winston Lee)",
+	  "smell": "Shattered Memories",
+	  "season": 11,
+	  "bonuses": {
+		"deluxebirdseed": true,
+		"oldfiles": true
+	  },
+	  "embed": "https://media.discordapp.com/attachments/865407405092503582/1527109225321336882/heartchickdc.png"
+	},
+			{
+	  "chance": 0.5,
+	  "filename": "heartchickdc_alt",
+	  "name": "Heart Chick (Discontinued Alternate)",
+	  "type": "Discontinued Alternate",
+	  "description": "(Art by Winston Lee)",
+	  "smell": "Rotten Eggshells",
+	  "season": 11,
+	  "bonuses": {
+		"deluxebirdseed": true,
+		"pocketdimension": true,
+		"aboveur": true,
+        "oldfiles": true
+	  },
+	  "embed": "https://media.discordapp.com/attachments/865407405092503582/1527111984628371486/heartchickdc_alt.png"
 	}
   ]
 }

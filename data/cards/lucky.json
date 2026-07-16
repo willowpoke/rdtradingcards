@@ -42,6 +42,20 @@
 			},
 			"embed": "https://media.discordapp.net/attachments/829197797789532181/1510317493661732956/luckyur.png"
 		},
+				{
+			"chance": 1,
+			"filename": "luckyalt",
+			"name": "Maximo \"Lucky\" Jonronero (Alternate)",
+			"type": "Alternate",
+			"description": "(Art by Winston Lee)",
+			"smell": "Baseball Cards",
+			"season": 11,
+			"bonuses": {
+				"sportsplaceholder": true,
+				"pocketdimension": true
+			},
+			"embed": "https://media.discordapp.com/attachments/865407405092503582/1527108438750920724/luckyalt.png"
+		},
 		{
 			"chance": 0,
 			"filename": "luckyc",
